@@ -1,0 +1,693 @@
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+    <div fxFlex>
+      <span *ngIf="loading">Loading...</span>
+      <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+          <div fxFlex>
+            <mat-card class="example-card">
+              <mat-card-header class="topBtns">
+                <mat-card-title >Tile: {{selectedData.title}}
+                  <button mat-raised-button (click)="toggleClick('icon')" color="warning">Icon</button>
+                  <button mat-raised-button (click)="toggleClick('background')" [disabled]="!selectedData.hasOwnProperty('_id')" color="warning">Background</button>
+                  <button mat-raised-button (click)="toggleClick('delete')" [disabled]="!selectedData.hasOwnProperty('_id')" color="danger">Delete</button>
+                  <button mat-raised-button (click)="toggleClick('preview')" color="info" [disabled]="!selectedData.hasOwnProperty('_id')">Preview</button>
+                  <button mat-raised-button (click)="toggleClick('duplicate')" color="warning">Duplicate</button>
+                  <button mat-raised-button (click)="toggleClick('save')" color="primary">Save</button>
+                  <button mat-raised-button (click)="toggleClick('new')" color="success">New</button>
+                </mat-card-title>
+                <!-- <div fxFlex></div>
+                <div fxLayoutAlign="end center" class="topBtns" style="display: inline;">
+                    <button mat-raised-button (click)="toggleClick('new')" color="success">New</button>
+                    <button mat-raised-button (click)="toggleClick('save')" color="primary">Save</button>
+                    <button mat-raised-button (click)="toggleClick('duplicate')" color="warning">Duplicate</button>
+                    <button mat-raised-button (click)="toggleClick('preview')" color="info" [disabled]="!selectedData.hasOwnProperty('_id')">Preview</button>
+                    <button mat-raised-button (click)="toggleClick('delete')" [disabled]="!selectedData.hasOwnProperty('_id')" color="danger">Delete</button>
+                    <button mat-raised-button (click)="toggleClick('background')" [disabled]="!selectedData.hasOwnProperty('_id')" color="warning">Background</button>
+                    <button mat-raised-button (click)="toggleClick('icon')" color="warning">Icon</button>
+                </div> -->
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+                    <div fxFlex="75">
+                      <div fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+                        <div fxFlex>
+                          <mat-form-field>
+                          <input matInput name="title" [(ngModel)]="selectedData.title" [required]="true" placeholder="Title" [errorStateMatcher]="esMatcher">
+                          <mat-error *ngIf="selectedData.title === undefined || selectedData.title === ''">
+                            Title is required.
+                          </mat-error>
+                          </mat-form-field>
+                        </div>
+                          <div fxFlex>
+                            <mat-form-field>
+                              <input matInput name="notes" [(ngModel)]="selectedData.notes" [required]="false" placeholder="Tags" [errorStateMatcher]="esMatcher">
+                              <mat-error *ngIf="selectedData.notes === undefined || selectedData.notes === ''">
+                                Tags is required.
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+
+                        <div fxFlex>
+                          <mat-form-field>
+                            <input [style.visibility]="'hidden'" matInput name="language" [(ngModel)]="selectedData.language" [required]="true" [errorStateMatcher]="esMatcher">
+                            <mat-label>Language</mat-label>
+                            <mat-select ng-model="language" [required]="true" (selectionChange)="selectedData.language = $event.value" [value]="selectedData.language">
+                              <mat-option value="" >Select Language</mat-option>
+                              <mat-option *ngFor="let itm of languageList" [value]="itm.code" >{{itm.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="selectedData.language === undefined || selectedData.language === ''">
+                              Language is required.
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div fxFlex>
+                          <mat-form-field>
+                            <input [style.visibility]="'hidden'" matInput name="category" [(ngModel)]="selectedData.category" [required]="true" [errorStateMatcher]="esMatcher">
+                            <mat-label>Category</mat-label>
+                            <mat-select ng-model="category" [required]="true" (selectionChange)="selectedData.category = $event.value" [value]="selectedData.category">
+                              <mat-option value="-1" >Select Category</mat-option>
+                              <mat-option *ngFor="let itm of tileCategories" [value]="itm._id" >{{itm.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="selectedData.category === undefined || selectedData.language === ''">
+                              Category is required.
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div fxFlex>
+                          <mat-form-field>
+                            <input [style.visibility]="'hidden'" matInput name="template" [(ngModel)]="selectedData.template" [required]="true" [errorStateMatcher]="esMatcher">
+                            <mat-label>Template</mat-label>
+                            <mat-select ng-model="template" [required]="true" (selectionChange)="selectedData.template = $event.value" [value]="selectedData.template">
+                              <mat-option value="-1" >Select Template</mat-option>
+                              <mat-option *ngFor="let itm of tileThemes" [value]="itm._id" >{{itm.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="selectedData.template === undefined || selectedData.template === ''">
+                              Template is required.
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxFlex="25">
+                      <div>
+                        <mat-checkbox class="example-margin" name="rtl" [(ngModel)]="selectedData.rtl" (change)="selectedData.rtl = $event.checked">Right To Left</mat-checkbox>
+                      </div>
+                      <div>
+                        <mat-checkbox class="example-margin" name="requiresLogin" [(ngModel)]="selectedData.requiresLogin" (change)="selectedData.requiresLogin = $event.checked">Requires Login</mat-checkbox>
+                      </div>
+                      <div>
+                        <mat-checkbox class="example-margin" name="enableZoom" [(ngModel)]="selectedData.enableZoom" (change)="selectedData.enableZoom = $event.checked">Enable Zoom</mat-checkbox>
+                      </div>
+                      <div>
+                        <mat-checkbox class="example-margin" name="showAsTabs" [(ngModel)]="selectedData.showAsTabs" (change)="selectedData.showAsTabs = $event.checked">Show as tabs</mat-checkbox>
+                      </div>
+                    </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+      </div>
+      <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+          <div fxFlex="25">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Tiles</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-form-field >
+          					<input matInput #searchInput placeholder="Search" [value]="searchVal">
+          			</mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-nav-list>
+                  <mat-list-item *ngFor="let data of dataList" (click)="selectItem(data)">
+                     <img *ngIf="data.art !== '/img/tile_default.jpg'" src="{{ data.art }}" class="tileArt" mat-list-icon/>
+                     <img *ngIf="data.art === '/img/tile_default.jpg'" src="/assets/{{ data.art }}" class="tileArt" mat-list-icon/>
+                     <a class="tileName" matLine href="Javascript:void(0)" >{{ data.title }}
+                       <span *ngIf="data.hasOwnProperty('smart') && data.smart.hasOwnProperty('apps')">
+                          <mat-icon *ngFor="let smt of data.smart.apps" aria-hidden="false" title="{{smt.name}}">emoji_objects</mat-icon>
+                        </span>
+                        <span *ngIf="data.hasOwnProperty('Procedure')">
+                          <mat-icon *ngFor="let proc of data.Procedure" aria-hidden="false" title="{{proc.name}}">local_hospital</mat-icon>
+                        </span>
+                        <span *ngIf="data.hasOwnProperty('notification') && data.notification.hasOwnProperty('apps')">
+                          <mat-icon *ngFor="let ntf of data.notification.apps" aria-hidden="false" title="{{ntf.name}}">notification_important</mat-icon>
+                        </span>
+                        <span *ngIf="data.hasOwnProperty('hsrRuleEngine')">
+                          <mat-icon *ngFor="let rul of data.hsrRuleEngine" aria-hidden="false" title="{{rul.ruleName}}">favorite</mat-icon>
+                        </span>
+                        <span *ngIf="data.hasOwnProperty('isWeight') && data.isWeight">
+                          <mat-icon aria-hidden="false" class="rotate90">switch_video</mat-icon>
+                        </span>
+                     </a>
+                     <button mat-icon-button (click)="delete($event, data._id)">
+                        <mat-icon>cancel</mat-icon>
+                     </button>
+                     <!-- <mat-icon>arrow_forward_ios</mat-icon> -->
+                  </mat-list-item>
+                </mat-nav-list>
+              </mat-card-content>
+              <mat-card-actions>
+                <mat-paginator [pageSize]="pageSize" [length]="paginatorTotal | async" [showFirstLastButtons]="true"></mat-paginator>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div fxFlex="50">
+            <mat-card class="tileData">
+              <mat-card-header>
+                <mat-card-title>Tile Data: </mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <div *ngFor="let subItem of blocks;let index = index">
+                  <mat-card class="example-card" *ngIf="subItem" >
+                    <mat-card-header>
+                      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                      <mat-card-title>{{subItem.blockName}}</mat-card-title>
+                      <div fxFlex></div>
+                      <div fxLayoutAlign="center center">
+                        <button [disabled]="index === 0" mat-icon-button (click)="moveSubData(true, index)">
+                           <mat-icon>keyboard_arrow_up</mat-icon>
+                        </button>
+                        <button [disabled]="index === blocks.length-1" mat-icon-button (click)="moveSubData(false, index)">
+                           <mat-icon>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="removeWidget(index)">
+                           <mat-icon>close</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteWidget(index)" *ngIf="subItem.activate">
+                           <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="unDeleteWidget(index)" *ngIf="!subItem.activate">
+                           <mat-icon>undo</mat-icon>
+                        </button>
+                      </div>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content [hidden]="!subItem.activate">
+                      <app-widget [title]="subItem.blockName" [type]="subItem.type" [data]="subItem" (onActionData)="actionData(index, $event)"></app-widget>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div fxFlex="25">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Widgets</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-accordion>
+                  <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Basic
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class='widget-basic-collapse'>
+                      <div id='widgetEditor' block='Text' data-placement='top' title='Add any description in multiple paragraphs.'
+                        class='widget_btn' (click)='loadWidgets($event, "text", {}, "Editor")'>
+                        <div>
+                          <img src='/assets/img/text_32.png' />
+                        </div>
+                        <div>
+                          <label>Editor</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetUploadVideo' block='Video' data-toggle='tooltip' title='Upload a video file'
+                        class='widget_btn' (click)='loadWidgets($event, "video", {}, "Upload Video")'>
+                        <div>
+                          <img src='/assets/img/video_32.png' />
+                        </div>
+                        <div>
+                          <label>Upload Video</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPicture' block='picture' data-toggle='tooltip'
+                        title='Allow users to upload their own pictures.  Select Moderate if you want pictures to be moderated before being published.'
+                        class='widget_btn' (click)='loadWidgets($event, "picture", {}, "Event Media")'>
+                        <div>
+                          <img  src='/assets/img/camara.png' />
+                        </div>
+                        <div>
+                          <label>Event Media</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetDisqus' block='disqus' data-toggle='tooltip'
+                        title='Disqus allows to create a discussion room amongst users. It helps you build a community of active readers and commenters.'
+                        class='widget_btn' (click)='loadWidgets($event, "disqus", {}, "Disqus")'>
+                        <div>
+                          <img  src='/assets/img/disqus.png' />
+                        </div>
+                        <div>
+                          <label>Disqus</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetSocialFeed' block='feed' data-toggle='tooltip' title='Integrate FB and Twitter'
+                        class='widget_btn'  (click)='loadWidgets($event, "feed", {}, "Social Feed")'>
+                        <div>
+                          <img src='/assets/img/icon-feed.png' />
+                        </div>
+                        <div>
+                          <label>Social Feed</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetCalendar' block='calendar' data-toggle='tooltip' title='This Widget allows to create calendar'
+                        class='widget_btn' (click)='loadWidgets($event, "calendar", {}, "Calendar")' >
+                        <div>
+                          <img src='/assets/img/calendar.png' />
+                        </div>
+                        <div>
+                          <label>Calendar</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetShare' block='share' data-toggle='tooltip' title='Share this Tile as a URL.'
+                        class='widget_btn' (click)='loadWidgets($event, "share", {}, "Share")'>
+                        <div>
+                          <img  src='/assets/img/share_this.png' />
+                        </div>
+                        <div>
+                          <label>Share</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPatient' block='patients' data-toggle='tooltip' title='Show the list of patients by clinic'
+                        class='widget_btn' (click)='loadWidgets($event, "patients", {}, "Patients")'>
+                        <div>
+                          <img  src='/assets/img/patient.png' />
+                        </div>
+                        <div>
+                          <label>Patients</label>
+                        </div>
+                      </div>
+                    </div>
+
+                  </mat-expansion-panel>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Form
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class='widget-basic-collapse'>
+                      <div id='widgetStartWrapper' block='StartWrapper' data-toggle='tooltip'
+                        title='Wrap multiple Form Widgets into one form' class='widget_btn' (click)='loadWidgets($event, "startwrapper", {}, "Start Wrapper")'>
+                        <div>
+                          <img  src='/assets/img/start_wrapper.png' />
+                        </div>
+                        <div>
+                          <label>Start Wrapper</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetTitle' block='title' data-toggle='tooltip'
+                        title='Title that will appear over any form you create' class='widget_btn' (click)='loadWidgets($event, "title", {}, "Form Title")'>
+                        <div>
+                          <img  src='/assets/img/form.png' />
+                        </div>
+                        <div>
+                          <label>Form Title</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetAccount' block='Account' data-toggle='tooltip'
+                        title='Name, DOB, Gender, Phone, email etc. Select the fields you want to appear in the app.'
+                        class='widget_btn' (click)='loadWidgets($event, "account", {}, "Connection Card")'>
+                        <div>
+                          <img  src='/assets/img/profile.png' />
+                        </div>
+                        <div>
+                          <label>Connection Card</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetAttendance' block='Attendance' data-toggle='tooltip'
+                        title='Users can select if they are attending In-Person or Online' class='widget_btn' (click)='loadWidgets($event, "attendance", {}, "Attendance")'>
+                        <div>
+                          <img  src='/assets/img/clock.png' />
+                        </div>
+                        <div>
+                          <label>Attendance</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetSurvey' block='Survey' data-toggle='tooltip' data-toggle='tooltip'
+                        title='Multiple questions where users can select only One or Multiple answers.  Percentages can be shown in-app.'
+                        class='widget_btn' (click)='loadWidgets($event, "survey", {}, "Simple Questionnaire")' >
+                        <div>
+                          <img src='/assets/img/survey1.png' />
+                        </div>
+                        <div>
+                          <label>Simple Questionnaire</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetQuestionnaire' block='questionnaire' data-toggle='tooltip' data-toggle='tooltip'
+                        title='Multiple questions where users can select only One or Multiple answers.  Percentages can be shown in-app.'
+                        class='widget_btn'  (click)='loadWidgets($event, "questionnaire", {}, "Cascading Questionnaire")'>
+                        <div>
+                          <img
+                            src='/assets/img/survey.png' />
+                        </div>
+                        <div>
+                          <label>Cascading Questionnaire</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetQuestions' block='questions' data-toggle='tooltip'
+                        title='One or more questions requiring users to type their answers.' class='widget_btn' (click)='loadWidgets($event, "questions", {}, "Q & A")'>
+                        <div>
+                          <img src='/assets/img/QA.png' />
+                        </div>
+                        <div>
+                          <label>Q & A</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetInquiry' block='inquiry' data-toggle='tooltip'
+                        title='Add Inquiry at the bottom of a Tile to allow users to send inquiries about the subject discussed in that Tile. Inquiries are directed to the email entered in the Tile.'
+                        class='widget_btn' (click)='loadWidgets($event, "inquiry", {}, "Inquiry")'>
+                        <div>
+                          <img  src='/assets/img/inquery.png' />
+                        </div>
+                        <div>
+                          <label>Inquiry</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetProfile' block='Profile' data-toggle='tooltip' title='Add profile to update user information'
+                        class='widget_btn' (click)='loadWidgets($event, "profile", {}, "Profile")'>
+                        <div>
+                          <img  src='/assets/img/my-account.png' />
+                        </div>
+                        <div>
+                          <label>Profile</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetConfirmation' block='confirmation' data-toggle='tooltip'
+                        title='Confirmation page after user submits a form. In case there is no confirmation page, a default message is shown in the app. If you use a confirmation, then your own message appears.'
+                        class='widget_btn' (click)='loadWidgets($event, "confirmation", {}, "Confirmation")'>
+                        <div>
+                          <img  src='/assets/img/confirm.png' />
+                        </div>
+                        <div>
+                          <label>Confirmation</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPassword' block='password' data-toggle='tooltip'
+                        title='Password allows us to change the password for the registered users' class='widget_btn' (click)='loadWidgets($event, "password", {}, "Password")'>
+                        <div>
+                          <img  src='/assets/img/icon_password.png' />
+                        </div>
+                        <div>
+                          <label>Password</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetNext' block='next' data-toggle='tooltip'
+                        title='Next tile page shows after user submits a form.' class='widget_btn'  (click)='loadWidgets($event, "next", {}, "Next")'>
+                        <div>
+                          <img src='/assets/img/arrow_next_icon.png' />
+                        </div>
+                        <div>
+                          <label>Next</label>
+                        </div>
+                      </div>
+                      <!-- html += "<div id='widgetUser' block='user' data-toggle='tooltip' title='User is to update and add new user.' class='widget_btn'>";
+                            <div><img src='/img/user_widget_icon.png'/></div>
+                            <div><label>User</label></div>
+                          </div> -->
+                      <div id='widgetFormPhoto' block='FormPhoto' data-toggle='tooltip' title='Attach Photos to the form'
+                        class='widget_btn'  (click)='loadWidgets($event, "formphoto", {}, "Form Media")'>
+                        <div>
+                          <img src='/assets/img/form_photo_widget.png' />
+                        </div>
+                        <div>
+                          <label>Form Media</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetFormDocument' block='FormDocument' data-toggle='tooltip' title='Upload the document files (pdf, docx, xls,...) to the form'
+                        class='widget_btn'  (click)='loadWidgets($event, "formdocument", {}, "Form Document")'>
+                        <div>
+                          <img src='/assets/img/file_upload_widget.png' />
+                        </div>
+                        <div>
+                          <label>Form Document</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPainLevel' block='PainLevel' data-toggle='tooltip' title='Denotes pain level'
+                        class='widget_btn' (click)='loadWidgets($event, "painlevel", {}, "Pain Level")'>
+                        <div>
+                          <img src='/assets/img/pain_level.png' />
+                        </div>
+                        <div>
+                          <label>Pain Level</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetDrawTool' block='DrawTool' data-toggle='tooltip'
+                        title='You can draw on a picture or just on a blank screen to draw angles and pictures of a angle iron for instance'
+                        class='widget_btn' (click)='loadWidgets($event, "drawtool", {}, "Draw Tool")'>
+                        <div>
+                          <img  src='/assets/img/draw_tool.png' />
+                        </div>
+                        <div>
+                          <label>Draw Tool</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPhysician' block='Physician' data-toggle='tooltip' title='Assign a physician to the patient'
+                        class='widget_btn' (click)='loadWidgets($event, "physician", {}, "Physician")' >
+                        <div>
+                          <img src='/assets/img/physician.png' />
+                        </div>
+                        <div>
+                          <label>Physician</label>
+                        </div>
+                      </div>
+                      <!-- <div id='widgetMobileVideo' block='MobileVideo' data-toggle='tooltip' title='Upload Mobile Video' class='widget_btn'>
+                            <div><img src='/img/mobile-video.png'/></div>
+                            <div><label>Mobile Video</label></div>
+                          </div>-->
+
+                      <div id='widgetLocation' block='location' data-toggle='tooltip' title='Get and show user location'
+                        class='widget_btn' (click)='loadWidgets($event, "location", {}, "Location")' >
+                        <div>
+                          <img src='/assets/img/location.png' />
+                        </div>
+                        <div>
+                          <label>Location</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetFlowintegration' block='FlowIntegration' data-toggle='tooltip' title='Create flow integration'
+                        class='widget_btn' (click)='loadWidgets($event, "FlowIntegration", {}, "Flow Integration")'>
+                        <div>
+                          <img
+                            src='/assets/img/flowintegration.png' />
+                        </div>
+                        <div>
+                          <label>Flow Integration</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetQRcode' block='qrcode' data-toggle='tooltip'
+                        title='Reads QR code and shows data based on option' class='widget_btn' (click)='loadWidgets($event, "qrcode", {}, "QR code")'>
+                        <div>
+                          <img  src='/assets/img/readqrcode.png' />
+                        </div>
+                        <div>
+                          <label>QR code</label>
+                        </div>
+                      </div>
+                      <div id='widgetEndWrapper' block='EndWrapper' data-toggle='tooltip'
+                        title='Wrap multiple Form Widgets into one form' class='widget_btn' (click)='loadWidgets($event, "endwrapper", {}, "End Wrapper")'>
+                        <div>
+                          <img  src='/assets/img/stop_wrapper.png' />
+                        </div>
+                        <div>
+                          <label>End Wrapper</label>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Restricted
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class='widget-basic-collapse'>
+                      <div id='widgetFill' block='fill' data-toggle='tooltip'
+                        title='Fill-in the blanks. Type the text and let users fill-in the blanks. Enter 3 underscores ___ for the blank words.  You may use multiple 3 underscores in a row, but add a space after the 3rd.'
+                        class='widget_btn' (click)='loadWidgets($event, "fill", {}, "Fill-In")'>
+                        <div>
+                          <img  src='/assets/img/fill.png' />
+                        </div>
+                        <div>
+                          <label>Fill-In</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetNotes' block='notes' data-toggle='tooltip' title='Users can take their own notes.'
+                        class='widget_btn' (click)='loadWidgets($event, "notes", {}, "Notes")'>
+                        <div>
+                          <img  src='/assets/img/notes.png' />
+                        </div>
+                        <div>
+                          <label>Notes</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetButtons' block='buttons' data-toggle='tooltip'
+                        title='Multiple buttons can be added, with before click and after click values. User can toggle between buttons, only the last value is taken into account.'
+                        class='widget_btn'  (click)='loadWidgets($event, "buttons", {}, "Buttons")'>
+                        <div>
+                          <img src='/assets/img/buttons.png' />
+                        </div>
+                        <div>
+                          <label>Buttons</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetContactUs' block='contactus' data-toggle='tooltip'
+                        title='Users enter their information requesting you to contact them.  You will receive an email with their contact info.'
+                        class='widget_btn' (click)='loadWidgets($event, "contactus", {}, "Contact Us")' >
+                        <div>
+                          <img src='/assets/img/icon-email.png' />
+                        </div>
+                        <div>
+                          <label>Contact Us</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPlacefull' block='placefull' data-toggle='tooltip'
+                        title='PlaceFull event booking and ticketing' class='widget_btn'  (click)='loadWidgets($event, "placefull", {}, "PlaceFull")' >
+                        <div>
+                          <img src='/assets/img/pf_logo.png' />
+                        </div>
+                        <div>
+                          <label>PlaceFull</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetAddToCart' block='AddToCart' data-toggle='tooltip' title='You can cart your order'
+                        class='widget_btn' (click)='loadWidgets($event, "addtocart", {}, "Add to Cart")'>
+                        <div>
+                          <img  src='/assets/img/icon_add_to_cart.png' />
+                        </div>
+                        <div>
+                          <label>Add to Cart</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetCart' block='Cart' data-toggle='tooltip' title='You can view all your carts'
+                        class='widget_btn'  (click)='loadWidgets($event, "cart", {}, "Cart")'>
+                        <div>
+                          <img src='/assets/img/icon_cart.png' />
+                        </div>
+                        <div>
+                          <label>Cart</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetBlanksForm' block='blanksform' data-toggle='tooltip'
+                        title='In-app form fill with picture upload and email alert' class='widget_btn'  (click)='loadWidgets($event, "blanksform", {}, "Blank Form")'>
+                        <div>
+                          <img src='/assets/img/blank_form.png' />
+                        </div>
+                        <div>
+                          <label>Blank Form</label>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Exclusive
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class='widget-basic-collapse'>
+                      <div id='widgetExclusiveUrl' block='exclusiveUrl' data-toggle='tooltip' title='Integrate URL'
+                        class='widget_btn'  (click)='loadWidgets($event, "exclusiveurl", {}, "URL")'>
+                        <div>
+                          <img src='/assets/img/icon_url.png' />
+                        </div>
+                        <div>
+                          <label>URL</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetFileUpload' block='fileupload' data-toggle='tooltip' title='Upload PDF or other format files'
+                        class='widget_btn' (click)='loadWidgets($event, "fileupload", {}, "File Upload")'>
+                        <div>
+                          <img  src='/assets/img/uploads-icon.png' />
+                        </div>
+                        <div>
+                          <label>File Upload</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetPushpay' block='pushpay' data-toggle='tooltip' title='Integrate PushPay' class='widget_btn' (click)='loadWidgets($event, "pushpay", {}, "PushPay")'>
+                        <div>
+                          <img  src='/assets/img/pushpay.png' />
+                        </div>
+                        <div>
+                          <label>PushPay</label>
+                        </div>
+                      </div>
+                      <div block='threedcart' data-toggle='tooltip' title='Integrate 3dcart' class='widget_btn' (click)='loadWidgets($event, "threedcart", {}, "3dcart")'>
+                        <div>
+                          <img  src='/assets/img/3d-cart.png' />
+                        </div>
+                        <div>
+                          <label>3dcart</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetBlogs' block='blogs' data-toggle='tooltip' title='Integrate Blogs' class='widget_btn' (click)='loadWidgets($event, "blogs", {}, "Blogs")'>
+                        <div>
+                          <img src='/assets/img/icon-blogs.png' />
+                        </div>
+                        <div>
+                          <label>Blogs</label>
+                        </div>
+                      </div>
+
+                      <div id='widgetChat' block='chat' data-toggle='tooltip' title='Enable chat within the app.'
+                        class='widget_btn' (click)='loadWidgets($event, "chat", {}, "Chat")'>
+                        <div>
+                          <img  src='/assets/img/chat.png' />
+                        </div>
+                        <div>
+                          <label>Chat</label>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </mat-card-content>
+              <mat-card-actions>
+                <!-- <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button> -->
+              </mat-card-actions>
+            </mat-card>
+          </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="ili-panel confirmation_panel">
+  <p class="confirm_header_text">This page appears at the end of a form, and is used for Submit confirmation or a Thank You note</p>
+  <div class="confirmation_text_block">
+    <div class="submit_row">
+    <div class="input-group input-group-sm confirm_submit_text">
+      <span class="input-group-addon">Submit button text:</span>
+      <input [(ngModel)]="block.data.submittext" type="text" placeholder="Submit text" class="form-control">
+    </div>
+    <span class="confirmation_text"><p>Confirmation Format:</p></span>
+    <div class="row main_confirm_content">
+      <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.text" [config]="config"></ckeditor> -->
+      <ckeditor-block [value]="block.data.text" [widget_Buttons_map]="widget_Buttons_map" (textView)="onChange($event)" ></ckeditor-block>
+    </div>
+    </div>
+  </div>
+</div>

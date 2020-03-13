@@ -1,0 +1,37 @@
+@import '../../../../styles/conf';
+.pagesPopup{
+  .itemView{
+    width: 220px;
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+    height: 165px;
+  }
+  .itemView:hover{
+    background-color: #eee;
+  }
+  .dialog-title{
+    h2{
+      float:left;
+    }
+    mat-form-field{
+      float:right;
+    }
+  }
+  .dialog-content{
+    clear: both;
+  }
+  .dialog-actions{
+    clear: both;
+  }
+  .rotate90{
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+}
+:host ::ng-deep .backgroundPopup .mat-dialog-title{
+  margin: 0px;
+}

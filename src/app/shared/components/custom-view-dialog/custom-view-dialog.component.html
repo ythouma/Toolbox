@@ -1,0 +1,39 @@
+<div class="col-xl-12" *ngIf="data">
+	<h1 mat-dialog-title>{{data.title}}</h1>
+	<div mat-dialog-content >
+		<div *ngIf="data.modalSetting">
+      <mat-card *ngIf="data.modalSetting.fields">
+				<!-- <mat-card-header>
+					<mat-card-title>{{data.type}}</mat-card-title>
+				</mat-card-header> -->
+				<mat-card-content *ngIf="data.data">
+	          <div *ngFor="let col of data.modalSetting.fields" class="fieldItem">
+	            <div *ngIf="col.type !== 'action' && (col.editable || !col.generated)">
+								<div class="fieldInput" *ngIf="col.type === 'tags'">
+									<div style="font-weight:bold;margin-bottom: 5px;">{{col.displayName}}: </div>
+									<mat-chip-list aria-label="Tags">
+										<mat-chip *ngFor="let tg of data.data[col.name]">{{tg.name}}</mat-chip>
+									</mat-chip-list>
+								</div>
+								<div class="fieldInput" *ngIf="col.type === 'reference'">
+									<span style="font-weight:bold">{{col.displayName}}: </span> <span *ngIf="data.data.hasOwnProperty(col.name)">{{data.data[col.name]['name']}}</span>
+								</div>
+								<div class="fieldInput" *ngIf="col.type === 'enum'">
+									<span style="font-weight:bold">{{col.displayName}}: </span><app-enum-view [enumValue]="data.data[col.name]" [enumList]="col.enum"></app-enum-view>
+								</div>
+								<div class="fieldInput" *ngIf="col.type !== 'enum' && col.type !== 'tags' && col.type !== 'reference'">
+									<span style="font-weight:bold">{{col.displayName}}: </span>{{data.data[col.name]}}
+								</div>
+	            </div>
+	          </div>
+				</mat-card-content>
+      </mat-card>
+    </div>
+	</div>
+	<div mat-dialog-actions>
+		<span *ngIf="data.modalSetting && !data.modalSetting.hasOwnProperty('footer')">
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+    </span>
+	</div>
+	<br/>
+</div>

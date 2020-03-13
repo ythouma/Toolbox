@@ -1,0 +1,130 @@
+@import '../../../styles/conf';
+.dateFilters{
+  margin: 0px 5px;
+}
+table {
+  width: 100%;
+}
+.mat-spinner-color{
+  position: absolute;
+  top: 25%; // 50%
+  left: 50%;
+}
+.mat-spinner-color::ng-deep circle{
+  stroke: $primary-second !important;
+}
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  background: rgba(255,255,255,0.4);
+  th {
+    padding-right: 5px;
+  }
+  td {
+    padding-right: 5px;
+  }
+}
+.mat-icon-button{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.mat-icon{
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 18px;
+}
+.mat-table__wrapper .mat-table {
+    min-width: auto;
+}
+th.mat-header-cell {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.mat-paginator {
+  font-size: 1.2rem;
+}
+:host ::ng-deep .mat-sort-header-sorted {
+  color: black !important;
+}
+:host ::ng-deep .mat-select-trigger {
+  font-size: 1rem;
+}
+.mat-table__message {
+  display: inline-block;
+  margin-top: 8px;
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+    color: $secondory;
+}
+.paginator{
+  background: rgba(255, 255, 255, 0.4);
+}
+.mat-spinner-color{
+  position: absolute;
+  top: 25%; // 50%
+  left: 50%;
+}
+.mat-spinner-color::ng-deep circle{
+  stroke: $primary-second !important;
+}
+.example-container {
+  // display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+.refresh{
+  font-size: 1.8rem;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+.filter{
+  font-size: 1.8rem;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+.newRow{
+  font-size: 1.8rem;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
+.topRightBtn{
+  float:right;
+  color: $primary-second;
+  margin-top: 25px;
+  a{
+    color: $primary-second;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    vertical-align: super;
+    display: inline-block;
+  }
+  a:hover{
+    color: rgba(0,0,0,.87);
+  }
+}
+.topRightBubbles{
+  float:right;
+  color: $primary-second;
+  margin-top: 20px;
+  margin-right: 15px;
+}

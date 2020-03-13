@@ -1,0 +1,167 @@
+<!-- #BEGIN diagram/directive/dgrControls.html -->
+<!--<div class="diagram-controls">-->
+<!--<ul>-->
+
+<!--</ul>-->
+
+<!--<div class="hidden">-->
+<!--<input type="file" id="dgr-uploader" onchange="this.update()"/>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<div class="diagram-panel-controls">
+
+    <div class="col-xs-5">
+        <a class="btn btn-gray btn-just-icon tooltip-bottom"
+           ng-click="vm.newProcess()"
+           data-tip="Create a new BPMN/CMMN">
+            <i class="material-icons">insert_drive_file</i>
+        </a>
+        <a class="btn btn-gray btn-just-icon tooltip-bottom"
+           ng-click="vm.openFsProcess()"
+           data-tip="Open a BPMN/CMMN">
+            <i class="material-icons">folder_open</i>
+        </a>
+        <a
+            class="btn btn-gray btn-just-icon tooltip-bottom"
+            data-toggle="modal" data-target="#saveModal">
+            <i class="material-icons">save</i>
+        </a>
+        <a
+            class="btn btn-gray btn-just-icon tooltip-bottom"
+            ng-click="vm.source(3)"
+            data-tip="Show BPMN source">
+            <i class="material-icons">receipt</i>
+        </a>
+        <a class="btn btn-gray btn-just-icon tooltip-right"
+           ng-click="vm.toggleZoom(true)"
+           data-tip="Zoom in">
+            <i class="material-icons">zoom_in</i>
+        </a>
+        <a class="btn btn-gray btn-just-icon tooltip-right"
+           ng-click="vm.toggleZoom(false)"
+           data-tip="Zoom out">
+            <i class="material-icons">zoom_out</i>
+        </a>
+        <a
+            class="btn btn-gray btn-just-icon tooltip-right"
+            ng-click="vm.toggleFullScreen()"
+            data-tip="Go full screen">
+            <i class="material-icons">open_with</i>
+        </a>
+    </div>
+    <div class="col-xs-2 title">
+        {{vm.workbench.currentResource.projectName}}
+    </div>
+    <div class="col-xs-5">
+        <div class="pull-right">
+            <div class="dropdown" style="display: inline-block">
+                <button class="btn btn-gray dropdown-toggle tooltip-bottom" type="button" data-toggle="dropdown"
+                        data-tip="Select a resource">
+                    <span>{{vm.workbench.currentResource.resourceName.toUpperCase()}}</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="vm.newResource(1)">Create a new <span>BPMN</span></a></li>
+                    <li><a ng-click="vm.newResource(2)">Create a new <span>CMMN</span></a></li>
+                    <li ng-repeat="res in vm.workbench.resources track by $index">
+                        <div class="list-group">
+                            <a class="list-group-item" ng-click="vm.switchResource(res, true)">
+                                <h5 class="list-group-item-heading">
+                                    {{res.resourceName}}
+                                    <span class="pull-right">{{res.cfgResourceTypes.description}}</span>
+                                </h5>
+                                <small class="list-group-item-text">Data Objects: {{res.resourceDoList.length}}
+                                </small>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <a
+                id="delete-diagram"
+                class="btn btn-navbar btn-gray btn-just-icon tooltip-bottom"
+                ng-click="vm.openDelete()"
+                data-tip="Trash this resource">
+                <i class="material-icons">delete</i>
+            </a>
+            <a
+                class="btn btn-navbar btn-gray btn-just-icon tooltip-bottom"
+                data-tip="Diagram properties"
+                ng-click="vm.togglePropertiesPanelBy(0)">
+                <i class="material-icons">settings</i>
+            </a>
+            <a
+                id="manage-do-button"
+                class="btn btn-navbar btn-gray btn-just-icon tooltip-bottom"
+                ng-click="vm.togglePropertiesPanelBy(1)"
+                data-tip="Create New Data Object">
+                <i class="material-icons">input</i>
+
+            </a>
+            <a
+                id="show-rules-button"
+                class="btn btn-navbar btn-gray btn-just-icon tooltip-bottom"
+                ng-click="vm.togglePropertiesPanelBy(2)"
+                data-tip="Rules">
+                <i class="material-icons">list</i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="do_selection_task">
+    <instance-settings></instance-settings>
+</div>
+
+<div class="hidden">
+    <input type="file" id="dgr-uploader" onchange="this.update()"/>
+</div>
+
+
+<div id="saveModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Saving dialog</h4>
+            </div>
+            <div class="modal-body">
+                <form name="saveForm" novalidate class="css-form">
+                    <fieldset>
+                        <label for="resName" class="center-block">Name</label>
+                        <input id="resName" type="text" ng-model="vm.workbench.currentResource.resourceName"
+                               ng-required="true" minlength="3">
+                    </fieldset>
+                    <div class="row">
+                        <ul class="list-inline pull-right">
+                            <li>
+                                <a class="btn btn-gray btn-just-icon tooltip-bottom"
+                                   ng-click="vm.saveCurrentProcess(false)"
+                                   ng-disabled="!saveForm.$valid"
+                                   data-tip="Save"
+                                   data-dismiss="modal">
+                                    <i class="material-icons">save</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="btn btn-gray btn-just-icon tooltip-bottom"
+                                    ng-click="vm.deployProject()"
+                                    ng-disabled="!saveForm.$valid"
+                                    data-tip="Deploy"
+                                    data-dismiss="modal">
+                                    <i class="material-icons">send</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

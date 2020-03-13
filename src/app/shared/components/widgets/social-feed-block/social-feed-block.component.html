@@ -1,0 +1,19 @@
+<div class='ili-panel feed_panel'>
+  <div class="input-group input-group-sm feed_content">
+  <span class="input-group-addon">
+    <input value="true" [checked]="block.data.facebook" [(ngModel)]="block.data.facebook" class="facebook" type="checkbox">
+  </span>
+  <input [(ngModel)]="block.data.facebookurl" type="text" placeholder="Facebook feed url" class="form-control">
+  </div>
+  <div class="input-group input-group-sm feed_content">
+    <span class="input-group-addon">
+      <input value="true" [checked]="block.data.twitter" [(ngModel)]="block.data.twitter" type="checkbox">
+    </span>
+    <input type="text" [(ngModel)]="block.data.twitterurl" placeholder="Twitter feed url" class="form-control">
+  </div>
+  <div class="input-group input-group-sm feed_content">
+    <span class="input-group-addon"><input value="true" [checked]="block.data.instagram" [(ngModel)]="block.data.instagram" type="checkbox"></span>
+    <input type="text" [(ngModel)]="block.data.instaUserId" placeholder="Instagram User Id" class="form-control">
+    <input type="text" [(ngModel)]="block.data.instaAccessToken" placeholder="Instagram Access Token" class="form-control">
+  </div>
+</div>

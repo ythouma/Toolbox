@@ -1,0 +1,28 @@
+<div class='ili-panel addtocart_panel'>
+  <p class="text_header_content">This widget allows consumers to add items to their car cart using the Cart widget</p>
+  <div class="row cart_text_row">
+  <input value="true" [checked]="block.data.isProductName" [(ngModel)]="block.data.isProductName" class="cart-product-name-disable" title="Show the product name in the app" type="checkbox">
+  <input type="text" [(ngModel)]="block.data.productName" class="form-control input-sm add_cart_product_name" placeholder="Product Name">
+  </div>
+  <div class="row cart_text_row">
+  <input value="true" [checked]="block.data.isProductDescription" [(ngModel)]="block.data.isProductDescription" class="cart-product-desc-disable" title="Show the product description in the app" type="checkbox">
+  <input type="text" [(ngModel)]="block.data.description" class="form-control input-sm add_cart_description" placeholder="Description">
+  </div>
+  <div class="row cart_text_row">
+  <input value="true" [checked]="block.data.isProductPrice" [(ngModel)]="block.data.isProductPrice" class="cart-product-price-disable" title="Show the product price in the app" type="checkbox">
+  <input type="text" [(ngModel)]="block.data.price" class="form-control input-sm add_cart_price" placeholder="Price">
+  <input type="text" [(ngModel)]="block.data.currency" class="form-control input-sm add_cart_currency" placeholder="Currency">
+  </div>
+  <div class="row cart_text_row">
+  <input type="text" [(ngModel)]="block.data.textCartButton" class="form-control input-sm add_cart_btn" placeholder="Add to Cart">
+  </div>
+  <div class="row cart_text_row"><input [(ngModel)]="block.data.confirmationMessage" type="text" class="form-control input-sm add_confirm_message" placeholder="Confirmation Message">
+  </div>
+  <div class="row cart_text_row">
+  <input value="true" [checked]="block.data.isProductImage" [(ngModel)]="block.data.isProductImage" class="cart-product-image-disable" title="Show the product image in the app" type="checkbox">
+  <label style="font-size: 12px;">Product Image</label><button class="btn btn-success btn-xs btn-add-cart-picture">+ Add Picture</button>
+  </div>
+  <div class="row">
+    <img [src]="block.data.productImage" class="cart-product-image">
+  </div>
+</div>

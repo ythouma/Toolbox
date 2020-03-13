@@ -1,0 +1,10 @@
+<!-- <app-nav></app-nav> -->
+
+<app-topnav *ngIf="!hideOuter"></app-topnav>
+<app-sidebar *ngIf="!hideOuter"></app-sidebar>
+<app-loading-screen></app-loading-screen>
+<!-- <div class="main-container-new"> -->
+<div [class.main-container]="!hideOuter" [class.main-container-new]="hideOuter">
+    <app-page-header></app-page-header>
+    <router-outlet *ngIf="!hideInner"></router-outlet>
+</div>

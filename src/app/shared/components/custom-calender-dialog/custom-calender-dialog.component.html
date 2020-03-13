@@ -1,0 +1,34 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<mat-form-field style="width: 100%;">
+			<label>Subject</label>
+			<input matInput type="text" placeholder="" [(ngModel)]="subject">
+		</mat-form-field>
+		<mat-form-field style="width: 100%;">
+			<label>Start Date and Time</label>
+			<input matInput type="datetime-local" placeholder="" [(ngModel)]="startdatetime">
+		</mat-form-field>
+		<mat-form-field style="width: 100%;">
+			<label>End Date and Time</label>
+			<input matInput type="datetime-local" placeholder="" [(ngModel)]="enddatetime">
+		</mat-form-field>
+		<mat-form-field style="width: 100%;">
+			<label>Reminder</label>
+			<input matInput type="text" placeholder="" [(ngModel)]="remainder">
+		</mat-form-field>
+		<mat-form-field style="width: 100%;">
+			<label>Location</label>
+			<input matInput type="text" placeholder="" [(ngModel)]="location">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="confirmModal()">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>

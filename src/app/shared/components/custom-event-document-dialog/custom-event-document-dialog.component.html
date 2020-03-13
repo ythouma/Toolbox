@@ -1,0 +1,53 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<table role="presentation" cellspacing="0" border="0" style="width:100%;float:none;" align="left">
+			<tbody>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<div role="radiogroup" aria-labelledby="cke_5051_label" id="cke_5057_uiElement" class="cke_dialog_ui_radio" style="margin-bottom: 8px">
+							<label class="cke_dialog_ui_labeled_label" id="cke_5051_label"></label>
+							<div class="cke_dialog_ui_labeled_content" role="presentation">
+								<table role="presentation" id="cke_5056_uiElement" class="cke_dialog_ui_hbox">
+									<tbody>
+										<tr class="cke_dialog_ui_hbox">
+											<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:50%">
+												<input type="radio" class="cke_dialog_ui_radio_input" name="rdoFormMedia_radio" value="document" aria-labelledby="cke_5054_radio_input_label" id="cke_5055_uiElement" style="margin-bottom: 8px" [(ngModel)]="type">
+												<label id="cke_5054_radio_input_label" for="cke_5055_uiElement" class="" style="margin-bottom: 8px">Document</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<span id="cke_5060_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							<input class="cke_dialog_ui_checkbox_input" type="checkbox" aria-labelledby="cke_5058_label" id="cke_5059_uiElement" style="margin-bottom: 4px" [(ngModel)]="deleteIcon">
+							<label id="cke_5058_label" for="cke_5059_uiElement">Delete Icon</label>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<span id="cke_5063_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							<input class="cke_dialog_ui_checkbox_input" type="checkbox" aria-labelledby="cke_5061_label" id="cke_5062_uiElement" style="margin-bottom: 4px" [(ngModel)]="mediaName">
+							<label id="cke_5061_label" for="cke_5062_uiElement">Media Name</label>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="confirmModal()">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>

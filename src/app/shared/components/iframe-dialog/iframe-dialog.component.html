@@ -1,0 +1,13 @@
+<div class="col-xl-12">
+	<h1 mat-dialog-title>{{data.title}}</h1>
+	<div mat-dialog-content >
+		<div class="fieldItem" [style.height]="iframeHeight">
+			<span *ngIf="loading">Loading...</span>
+			<iframe id="iframeMain" #iframeMain width="100%" frameBorder="0" [src]="iframe_html" (load)="onload($event)" [height]="iframeHeight"></iframe>
+		</div>
+	</div>
+	<div mat-dialog-actions>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+	</div>
+	<br/>
+</div>

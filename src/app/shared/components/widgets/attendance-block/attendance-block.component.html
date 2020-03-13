@@ -1,0 +1,27 @@
+<div class="ili-panel attendance_panel">
+  <div class="row attendance_title_row">
+    <input type="text" [(ngModel)]="block.data.title" class="form-control input-sm" value="Today i will be Attending" placeholder="Today i will be Attending">
+  </div>
+  <div class="row attendance_text_row">
+    <span class="attendance-inapp-text">In app possible replies:</span>
+    <button (click)="addOption($event)" class="btn-info btn-xs btn-option-box">+ Add Option</button><br/>
+    <span>
+      <input value="true" [checked]="block.data.person" [(ngModel)]="block.data.person" class="chk-attendance-in-person" type="checkbox">
+      <div class="attendance-main-text-in-person">In-person</div>
+    </span>
+    <span class="attendance-online">
+      <input value="true" [checked]="block.data.online" [(ngModel)]="block.data.online" class="chk-attendance-online" type="checkbox">
+      <div class="attendance-main-text-online">Online</div>
+    </span>
+    <div *ngFor="let opt of block.data.options; let i = index; trackBy:trackByIndex" class="row attendance_options_row">
+      <input type="text" [(ngModel)]="block.data.options[i]" class="form-control input-sm" placeholder="Type option here">
+    </div>
+  </div>
+  <div class="row attendance_member_row">
+    <div class="input-group input-group-sm">
+      <span class="input-group-addon">
+      <input value="true" [checked]="block.data.addMember" [(ngModel)]="block.data.addMember" type="checkbox"></span>
+      <input type="text" [(ngModel)]="block.data.addQuestion" class="form-control">
+    </div>
+  </div>
+</div>

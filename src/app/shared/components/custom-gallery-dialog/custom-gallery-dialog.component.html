@@ -1,0 +1,76 @@
+<div class="col-xl-12 galleryPopup">
+	<div  mat-dialog-title class="dialog-title">
+		<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px" >
+			<div fxFlex  class="filterName">
+				{{data.title}}
+			</div>
+			<div fxFlex style="line-height: 75px;">
+				<mat-form-field class="example-full-width">
+				  <input [(ngModel)]="folderSelected" matInput type="text" placeholder="Select/Add Folder" aria-label="Number" [matAutocomplete]="auto" (focusout)="createNewFolder()">
+				  <mat-autocomplete class="autocomplete" #auto="matAutocomplete" (optionSelected)="setFolderSelected($event.option.value)" >
+				      <mat-option *ngFor="let option of dataListFolder" [value]="option" title="{{option}}">{{option}}</mat-option>
+				    </mat-autocomplete>
+				</mat-form-field>
+			</div>
+		</div>
+		<!-- <h2>{{data.title}}</h2> -->
+		<!-- <mat-form-field >
+				<input matInput #searchInput placeholder="Search" [value]="searchVal">
+		</mat-form-field> -->
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<mat-tab-group [selectedIndex]="tabSelected" (selectedIndexChange)="tabSelected = $event">
+		  <mat-tab label="Images">
+				<mat-card class="itemView" [class.selected]="itm.url === imageSelected?.url" *ngFor="let itm of dataList; let index=index" (click)="setImageSelected(itm)">
+				  <mat-card-header>
+				    <!-- <mat-card-title>{{itm.title}}</mat-card-title> -->
+						<i class="material-icons" (click)="delete($event, itm.url)">delete_forever</i>
+				  </mat-card-header>
+				  <img mat-card-image src="{{itm.url}}">
+				  <mat-card-content class="itemData">
+						<div class="dimentions">
+				    	{{itm.dimentions}}
+				    </div>
+						<div class="size">
+				    	{{itm.size}}
+						</div>
+				  </mat-card-content>
+				</mat-card>
+		  </mat-tab>
+		  <mat-tab #tabCrop label="Crop" [disabled]="!imageSelected">
+				<image-cropper  *ngIf="imageUrlPath"
+				    [imageBase64]="imageUrlPath"
+				    [maintainAspectRatio]="!(selectedRatio === 0)"
+				    [aspectRatio]="selectedRatio"
+				    format="png"
+						[autoCrop]="false"
+				    (imageCropped)="imageCropped($event)"
+				    (imageLoaded)="imageLoaded()"
+				    (cropperReady)="cropperReady()"
+				    (loadImageFailed)="loadImageFailed()"
+				></image-cropper>
+				<div style="width: 100%;text-align: right;">
+					<mat-radio-group aria-label="Select Ratio" [value]="selectedRatio" (change)="rationChanged($event)">
+						<mat-radio-button [value]="1 / 0.4">Crop for Tile</mat-radio-button>
+						<mat-radio-button [value]="1">Square Crop</mat-radio-button>
+						<mat-radio-button [value]="0">Free crop</mat-radio-button>
+					</mat-radio-group>
+		    </div>
+		  </mat-tab>
+		</mat-tab-group>
+
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<mat-paginator [pageSize]="pageSize" [length]="paginatorTotal | async" [showFirstLastButtons]="true"></mat-paginator>
+		<mat-divider></mat-divider>
+		<div style="width: 100%;margin-top:10px;">
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<input #imageInput [hidden]="true" type="file" name="upfileLogo" accept="image/*" multiple="false" id="image_selector" (change)="onBrowseFiles($event.target)">
+			<button mat-raised-button (click)="imageInput.click()">Upload</button>
+			<button mat-raised-button (click)="tabSelected = 1" [hidden]="!imageSelected || tabSelected === 1">Crop</button>
+			<button mat-raised-button (click)="cropIt()" [hidden]="!imageSelected && tabSelected !== 1">Confirm Crop</button>
+			<button mat-raised-button (click)="closeModal(imageSelected.url)" [hidden]="!imageSelected">Select without Crop</button>
+    </div>
+	</div>
+	<br/>
+</div>

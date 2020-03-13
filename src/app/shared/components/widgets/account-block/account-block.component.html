@@ -1,0 +1,20 @@
+<div class='ili-panel account_panel'>
+  <div *ngFor="let connCard of block.data.connectionCard; let i = index; trackBy:trackByIndex" class='input-group input-group-sm contents_input_account'>
+    <span class="input-group-addon">
+    <b *ngIf="connCard!.tag !== 'addMember'" style="margin-right:2%">*</b>
+    <input *ngIf="connCard!.tag !== 'addMember'" value="true" [checked]="connCard!.required" [(ngModel)]="connCard!.required" style="margin-right: 4%;" title="Field is mandatory" class="mandatory" type="checkbox">
+    <input value="true" (change)="connCard!.tag === 'addMember'? addSubMember($event, -1, 'main') : false" [checked]="connCard!.assigned" [(ngModel)]="connCard!.assigned" class="profile-assigned account-main " title="Field appears in the app" type="checkbox">
+    </span>
+    <span type="text" class="form-control profile-name">{{connCard!.name}}</span>
+  </div>
+</div>
+<div *ngFor="let sbMem of block.data.submember; let mIdx = index; trackBy:trackByIndex" class='ili-panel account_panel'>
+  <div *ngFor="let sM of sbMem; let sIdx = index; trackBy:trackByIndex" class='input-group input-group-sm contents_input_account'>
+    <span class="input-group-addon">
+    <b *ngIf="sM!.tag !== 'addMember'"style="margin-right:2%">*</b>
+    <input *ngIf="sM!.tag !== 'addMember'" value="true" [checked]="sM!.required" [(ngModel)]="sM!.required" style="margin-right: 4%;" title="Field is mandatory" class="mandatory" type="checkbox">
+    <input value="true" (change)="sM!.tag === 'addMember'? addSubMember($event, mIdx, 'sub') : false" [checked]="sM!.assigned" [(ngModel)]="sM!.assigned" class="profile-assigned account-main " title="Field appears in the app" type="checkbox">
+    </span>
+    <span type="text" class="form-control profile-name">{{sM!.name}}</span>
+  </div>
+</div>

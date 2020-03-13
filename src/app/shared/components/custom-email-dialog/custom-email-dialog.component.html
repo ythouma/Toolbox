@@ -1,0 +1,18 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<mat-form-field style="width: 100%;">
+			<label>Enter email you'd like to send</label>
+			<input matInput placeholder="" [(ngModel)]="dataVal">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="closeModal(dataVal)">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>

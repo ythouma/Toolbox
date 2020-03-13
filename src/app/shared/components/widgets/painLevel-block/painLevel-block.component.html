@@ -1,0 +1,13 @@
+<div class="ili-panel pain_level_panel">
+  <div class="input-group input-group-sm pain_level_content">
+    <span class="input-group-addon"><b style="margin-right:2%">*</b>
+    <input value="true" [checked]="block.data.mandatory" [(ngModel)]="block.data.question" title="Field is mandatory" type="checkbox"></span>
+    <input [(ngModel)]="block.data.question" type="text" placeholder="Enter Question here" class="form-control">
+  </div>
+  <div class="input-group input-group-sm pain_level_content">
+    <form>
+      <label style="font-size: 11px;" class="radio-inline"><input style="margin-top: 1px;" value="image" [checked]="block.data.level" [(ngModel)]="block.data.level" type="radio" name="optradio">Numeric Rating Scale with Emoticons</label>
+      <label style="font-size: 11px;" class="radio-inline"><input style="margin-top: 1px;" value="numeric" [checked]="block.data.level" [(ngModel)]="block.data.level" type="radio" name="optradio">Numeric Rating Scale</label>
+    </form>
+  </div>
+</div>

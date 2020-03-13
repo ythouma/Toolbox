@@ -1,0 +1,36 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<table role="presentation" id="cke_2441_uiElement" class="cke_dialog_ui_hbox">
+			<tbody>
+				<tr class="cke_dialog_ui_hbox">
+					<td class="cke_dialog_ui_hbox_first" role="presentation" style="width:33%">
+						<input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="link" aria-labelledby="cke_2435_radio_input_label" id="cke_2436_uiElement" [(ngModel)]="type">
+						<label id="cke_2435_radio_input_label" for="cke_2436_uiElement" class="">Text</label>
+					</td>
+					<td class="cke_dialog_ui_hbox_child" role="presentation" style="width:33%">
+						<input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="button" aria-labelledby="cke_2437_radio_input_label" id="cke_2438_uiElement" [(ngModel)]="type">
+						<label id="cke_2437_radio_input_label" for="cke_2438_uiElement" class="">Button</label>
+					</td>
+					<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:33%"><input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="image" aria-labelledby="cke_2439_radio_input_label" id="cke_2440_uiElement" [(ngModel)]="type">
+						<label id="cke_2439_radio_input_label" for="cke_2440_uiElement" class="">Image</label>
+					</td>
+			</tr>
+			</tbody>
+		</table>
+		<mat-form-field style="width: 100%;">
+			<label>Tile will automatically close after</label>
+			<input matInput type="number" placeholder="" min="0" [(ngModel)]="dataVal">
+			<mat-hint>Seconds</mat-hint>
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="confirmModal()">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>

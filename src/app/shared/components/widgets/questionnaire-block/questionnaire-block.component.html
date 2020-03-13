@@ -1,0 +1,72 @@
+<div class='ili-panel cc_ques_panel'>
+  <p class="cc_text_header_content">This widget allows you to add one or multiple questions, with one or more possible replies, with the choice of showing results in the app in real time. It can be used for Polls, Surveys, Votes, Requests to volunteer, etc.</p>
+  <div class="cc-questions-block">
+    <b style="float: left;margin-left:11px;">*</b>
+    <input value="true" [checked]="block.data.mandatory" [(ngModel)]="block.data.mandatory" title="Field is mandatory" class="cc-question-survey-md" type="checkbox">
+    <input type="text" [(ngModel)]="block.data.questionText" class="form-control input-sm cc_questionare_text" placeholder="Type question or text here ">
+    <button (click)="addOption($event)" class="btn btn-info btn-xs cc-btn-add-text-box">Add Option</button>
+  </div>
+  <div class="row cc-questionare-row">
+    <span class="cc-decription-questionare">User can select</span>
+    <div class="cc_questionnaire_controls">
+      <form>
+      <label style="font-size: 11px;" class="radio-inline"><input value="single" [(ngModel)]="block.data.questionType" type="radio" class="cc-ques-one" name="optradio">One Answer</label>
+      <label style="font-size: 11px;" class="radio-inline"><input value="multiple" [(ngModel)]="block.data.questionType" type="radio" class="cc-ques-multiple" name="optradio">Multiple Answers</label>
+    </form>
+    </div>
+    <input title="Take Notes when filling forms in the studio" type="checkbox" class="checkbox cc-chk-enable-note">
+    <span title="Take Notes when filling forms in the studio" class="cc-take-notes">Take Notes</span>
+    <div *ngIf="block.data.questionType && block.data.questionType.indexOf('single') !== -1" class="cc-ques-opts">
+      <form>
+        <label style="font-size: 11px;" class="radio-inline"><input value="radio" [(ngModel)]="block.data.inputControlType" type="radio" class="cc-ques-radio" name="optradio">Radio Button</label>
+        <label style="font-size: 11px;" class="radio-inline"><input value="dropdown" [(ngModel)]="block.data.inputControlType" type="radio" class="cc-ques-dropdown" name="optradio">Dropdown</label>
+      </form>
+    </div>
+  </div>
+  <div *ngFor="let opt of block.data.options; let i = index; trackBy:trackByIndex" class="row cc-options-main-row">
+    <div class="cc-options-row">
+      <span class="options-count">{{i + 1}}.</span>
+      <input type="text" [(ngModel)]="block.data.options[i].option" class="form-control input-sm cc_survey_option_box" placeholder="Type option here">
+      <img (click)="removeOption(opt)"  class="cc-delete-quest-option" src="/assets/img/close_bg.png">
+      <img width="19" title="Add Question" (click)="addSubOption($event, opt, 'questions')" class="cc-delete-quest-option" src="/assets/img/add_sub_questionnaire.png">
+      <img width="19" title="Add Textbox" (click)="addSubOption($event, opt, 'description')" class="cc-delete-quest-option" src="/assets/img/add_sub_entry.png">
+    </div>
+    <div *ngFor="let subOpt of opt?.subQuestions; let subIndex = index; trackBy:trackByIndex">
+      <questionnaire-sub-option *ngIf="!utils.isEmptyObject(subOpt) && subOpt.hasOwnProperty('type') && subOpt['type'] === 'questions'"  [questionWidth]="499" [optionWidth]="486" [isLevel]="true" (removeSubLevel)="deleteLevel($event)" [levelIndex]="1" [currentIndex]="subIndex" [parentIndex]="i" [subOption]="subOpt">
+      </questionnaire-sub-option>
+      <description-sub-option *ngIf="!utils.isEmptyObject(subOpt) && subOpt.hasOwnProperty('type') && subOpt['type'] === 'description'" [selectWidth]="428" [descriptionWidth]="494" (removeSubLevel)="deleteLevel($event)" [levelIndex]="1" [currentIndex]="subIndex" [parentIndex]="i" [subOption]="subOpt">
+      </description-sub-option>
+    </div>
+  </div>
+</div>
+<div class="row cc_ques_add_alert">
+  <button (click)="addConfirm($event)" class="btn btn-info btn-xs survey-confirmation" style="display: block;">Add Confirmation</button>
+  <button (click)="addAlert($event)" class="btn btn-ques-alert btn-info btn-xs">Add Alert</button>
+  <button (click)="addPopup($event)" class="btn btn-popup-alert btn-info btn-xs">Pop Up</button>
+</div>
+<div *ngIf="block.data.alerts && block.data.alerts.length > 0" class="ili-panel cc_ques_panel">
+  <div  *ngFor="let alrt of block.data.alerts; let i = index; trackBy:trackByIndex" class="row cc_ques_alert_row">
+    <span class="cc_ques_alert_count">{{i + 1}}.</span>
+    <input type="text" [(ngModel)]="block.data.alerts[i]" class="form-control input-sm cc_ques_alert_box" placeholder="Type email address to receive an alert when corresponding option is selected">
+  </div>
+</div>
+<span *ngIf="block.data.popup && block.data.popup.length > 0" class="txt-email-notes txt-popup">PopUp note for Selected Option</span>
+<div  *ngFor="let pp of block.data.popup; let i = index; trackBy:trackByIndex" style="margin-top: 8px;" class="row">
+  <div style="width:98%; margin-top: 7px;" class="col-md-11">
+    <div style="float:left; width:2.2%;">{{i + 1}}.</div>
+    <div style="float: left; width: 97.5%;">
+      <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.popup[i]" [config]="config"></ckeditor> -->
+      <ckeditor-block  [value]="block.data.popup[i]" (textView)="onChange(i, $event)" ></ckeditor-block>
+    </div>
+  </div>
+</div>
+<span *ngIf="block.data.confirmation && block.data.confirmation.length > 0" class="txt-email-notes txt-popup">Confirmation for Selected Option</span>
+<div *ngFor="let cc of block.data.confirmation; let i = index; trackBy:trackByIndex" style="margin-top: 8px;" class="row">
+  <div style="width:98%; margin-top: 7px;" class="col-md-11">
+    <div style="float:left; width:2.2%;">{{i + 1}}.</div>
+    <div style="float: left; width: 97.5%;">
+      <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.confirmation[i]" [config]="config"></ckeditor> -->
+      <ckeditor-block  [value]="block.data.confirmation[i]" (textView)="onChangeConfirmation(i, $event)" ></ckeditor-block>
+    </div>
+  </div>
+</div>

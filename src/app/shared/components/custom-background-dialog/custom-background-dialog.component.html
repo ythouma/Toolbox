@@ -1,0 +1,39 @@
+<div class="col-xl-12 backgroundPopup">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+			<div id="imageBackgroundLib" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; ">
+				<div class="tileBgContent">
+					<div class="tile-background">
+						<div class="vertical-app-background">
+							<img class="delete-vertical-bg" src="/assets/img/close_bg.png" [hidden]="!tileBackgroundPortrait" (click)="imageDelete('portrait', tileBackgroundPortrait)">
+							<div class="upload-vertical-app-background" style="display: block;">
+								<input #portraitattach [hidden]="true" type="file" name="upfileLogo" accept="image/*" multiple="false" id="image_selector" (change)="onBrowseFiles($event.target, 'portrait')">
+								<input *ngIf="tileBackgroundPortrait" class="img-vertical-background" type="image" src="{{tileBackgroundPortrait}}" width="40px" (click)="portraitattach.click()">
+								<input *ngIf="!tileBackgroundPortrait" class="img-vertical-background" type="image" src="/assets/img/background_upload.png" width="40px" (click)="portraitattach.click()">
+								<span class="bgp-txt-fileUpload" *ngIf="!tileBackgroundPortrait" >Upload File</span>
+								<span class="vertical-size" *ngIf="!tileBackgroundPortrait">1240 x 2208</span>
+							</div>
+						</div>
+						<div class="horizontal-app-background">
+							<img class="delete-horizontal-bg" src="/assets/img/close_bg.png"  [hidden]="!tileBackgroundLandscape" (click)="imageDelete('landscape', tileBackgroundLandscape)">
+							<div class="upload-horizontal-app-background" style="display: block;">
+								<input #landscapeattach [hidden]="true" type="file" name="upfileLogo" accept="image/*" multiple="false" id="image_selector" (change)="onBrowseFiles($event.target, 'landscape')">
+								<input *ngIf="tileBackgroundLandscape" class="img-horizontal-background" type="image" src="{{tileBackgroundLandscape}}" width="40px" (click)="landscapeattach.click()">
+								<input *ngIf="!tileBackgroundLandscape" class="img-horizontal-background" type="image" src="/assets/img/background_upload.png" width="40px" (click)="landscapeattach.click()">
+								<span class="bgl-txt-fileUpload" *ngIf="!tileBackgroundLandscape">Upload File</span>
+								<span class="horizontal-size" *ngIf="!tileBackgroundLandscape">2208 x 1240</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+    </span>
+	</div>
+	<br/>
+</div>

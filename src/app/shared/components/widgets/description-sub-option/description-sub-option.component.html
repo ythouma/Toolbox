@@ -1,0 +1,30 @@
+<div class="row cc-options-sub-row cc_desc_opt">
+ <span class="cc-sub-question-no">{{getLevelIndex()}}.{{getAlphaLetter(currentIndex)}}</span>
+ <span class="cc_ques_answer_type">Answer Type </span>
+ <select [(ngModel)]="subOption.controlType" [style.width]="selectWidth + 'px'" class="form-control input-sm cc_ques_desc_select">
+   <option value="text">Text</option>
+   <option value="text_na">Text with Unknown</option>
+   <option value="text_nil">Text with N/A</option>
+   <option value="textarea">Text Area </option>
+   <option value="textarea_na">Text Area with Unknown</option>
+   <option value="textarea_nil">Text Area with N/A</option>
+   <option value="date">Date</option>
+   <option value="date_na">Date with Unknown</option>
+   <option value="date_nil">Date with N/A</option>
+   <option value="date_approximate">Date with approximate</option>
+   <option value="datetime-local">Date and Time</option>
+   <option value="datetime-local_na">Date and Time with Unknown</option>
+   <option value="datetime-local_nil">Date and Time with N/A</option>
+   <option value="datetime-local_approximate">Date and Time with approximate</option>
+   <option value="time">Time Only</option>
+   <option value="time_na">Time Only with Unknown</option>
+   <option value="time_nil">Time Only with N/A</option>
+   <option value="time_approximate">Time Only with approximate</option>
+   <option value="number">Number</option>
+   <option value="number_na">Number with Unknown</option>
+   <option value="number_nil">Number with N/A</option>
+ </select>
+ <img (click)="deleteSubLevel($event)" class="cc-delete-quest-option" src="/assets/img/close_bg.png">
+ <textarea [(ngModel)]="subOption.questionText" [style.width]="descriptionWidth + 'px'" class="cc_sub_description">
+ </textarea>
+</div>

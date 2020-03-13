@@ -1,0 +1,13 @@
+<div class='ili-panel blogs_panel'>
+  <div class="input-group input-group-sm blogs_content">
+    <input type="text" [(ngModel)]="block.data.wordPressTitle" placeholder="Word Press Title" class="form-control">
+  </div>
+  <div class="input-group input-group-sm contents_input_account">
+    <span class="input-group-addon"><input (change)="openWordPress($event)" value="true" [checked]="block.data.wordPressTitle" [(ngModel)]="block.data.wordPressTitle" type="checkbox"></span>
+    <input type="text" [(ngModel)]="block.data.wordPressUrl" placeholder="Word Press Feed Url" class="form-control">
+  </div>
+  <div class="row blogs_main_content">
+    <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.wordPressContent" [config]="config"></ckeditor> -->
+    <ckeditor-block [value]="block.data.wordPressContent" (textView)="onChange($event)" ></ckeditor-block>
+  </div>
+</div>

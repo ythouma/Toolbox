@@ -1,0 +1,19 @@
+<div class="ili-panel next_panel">
+  <div style="margin-left: 2px;" class="row">
+    <span class="next-label">Type</span>
+    <label class="radio-inline">
+      <input type="radio" value="tile" [checked]="block.data.type" [(ngModel)]="block.data.type" class="next-tile"><span class="next-options">Tile</span>
+    </label>
+  </div>
+  <p class="header-next-block">This widget appears at the end of a form, and is used for Submit confirmation</p>
+  <div class="tile_link_block">
+    <div class="next_tile_submit_row">
+      <div class="input-group input-group-sm">
+      <span class="input-group-addon">Redirect button text:</span>
+      <input type="text" [(ngModel)]="block.data.text" placeholder="Submit text" class="form-control">
+      </div>
+    </div>
+    <button class="btn btn-tile-link btn-info btn-xs">Link Tile</button>
+  </div>
+</div>
+<p>Tile Title: {{ block.data.tileTile }} </p>

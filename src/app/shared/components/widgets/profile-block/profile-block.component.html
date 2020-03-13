@@ -1,0 +1,10 @@
+<div class='ili-panel profile_panel'>
+  <div *ngFor="let prof of block.data.profile; let i = index; trackBy:trackByIndex"  class='input-group input-group-sm contents_input_account'>
+    <span class="input-group-addon">
+    <b style="margin-right:2%">*</b>
+    <input [checked]="prof!.required" [(ngModel)]="prof!.required" style="margin-right: 4%;" title="Field is mandatory" class="mandatory" type="checkbox">
+    <input [checked]="prof!.assigned" [(ngModel)]="prof!.assigned" class="profile-assigned account-main " title="Field appears in the app" type="checkbox">
+    </span>
+    <span type="text" class="form-control profile-name">{{prof!.name}}</span>
+  </div>
+</div>

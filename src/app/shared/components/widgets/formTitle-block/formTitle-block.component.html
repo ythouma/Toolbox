@@ -1,0 +1,10 @@
+<div class='ili-panel form_title_panel'>
+  <div class="input-group input-group-sm">
+    <mat-form-field class="inputInside">
+      <mat-checkbox value="true" [checked]="block.data.title" [(ngModel)]="block.data.title" (change)="onChange($event)">
+        <input matInput type="text" placeholder="Title" [(ngModel)]="block.data.titletext" class="form-control" (change)="onChange($event)">
+      </mat-checkbox>
+    </mat-form-field>
+  </div>
+  <p class="form_title_text">Check the box to make the Title clickable to the form.</p>
+</div>

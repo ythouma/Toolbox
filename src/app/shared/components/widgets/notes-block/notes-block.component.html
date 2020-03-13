@@ -1,0 +1,17 @@
+<div class='ili-panel notes_panel'>
+<div class="row contents_input_account">
+  <div class="input-group input-group-sm">
+    <mat-checkbox value="true" [disabled]="isNotes" (change)="notesAssign($event, 'notes')" [checked]="block.data.notes" [(ngModel)]="block.data.notes">Notes</mat-checkbox>
+  </div>
+</div>
+<div class="row contents_input_account">
+  <div class="input-group input-group-sm">
+    <mat-checkbox value="true" [disabled]="isAllnotes" (change)="notesAssign($event, 'allNotes')" [checked]="block.data.allNotes" [(ngModel)]="block.data.allNotes">Notes Archive</mat-checkbox>
+  </div>
+</div>
+<div class="row contents_input_account">
+  <div class="input-group input-group-sm">
+    <mat-checkbox value="true" [disabled]="isJournal" (change)="notesAssign($event, 'journal')" [checked]="block.data.journal" [(ngModel)]="block.data.journal">Journal</mat-checkbox>
+  </div>
+</div>
+</div>

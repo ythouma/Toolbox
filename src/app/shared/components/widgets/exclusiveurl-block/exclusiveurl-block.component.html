@@ -1,0 +1,11 @@
+<div class='ili-panel exclusive_url_panel'>
+  <div class="input-group input-group-sm contents_exclusiveurl">
+    <input type="text" [(ngModel)]="block.data.url" placeholder="Enter the url" class="form-control">
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkUrlPriority('window')" [(ngModel)]="block.data.window" [checked]="block.data.window">Open in new window for all devices</label>
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkUrlPriority('iphonewindow')" [(ngModel)]="block.data.iphonewindow" [checked]="block.data.iphonewindow">Open in new window for iOS devices</label>
+  </div>
+</div>

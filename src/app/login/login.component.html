@@ -1,0 +1,53 @@
+<div class="login-page">
+    <div class="content">
+        <!-- <h1 class="app-name">Sb Admin Material</h1> -->
+        <form class="login-form" fxFlex  >
+            <div class="text-center" style="text-align: center;margin-bottom: 25px;">
+                <!-- <span class="app-name">
+                  DCT
+                </span> -->
+                <img src="assets/images/logo.png" class="circle z-depth-2 responsive-img activator" alt="{{subTitle}}" style="max-width: 300px;">
+            </div>
+            <div fxFlex  fxlayout="row" fxlayout.lt-md="column">
+                <div fxFlexFill>
+                    <div class="w-100">
+                        <label for="email">Email</label>
+                        <input placeholder="Email" id="email"  [value]="email" (change)="email=$event.target.value">
+                    </div>
+                </div>
+            </div>
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <div class="w-100">
+                        <label for="password">Password</label>
+                        <input type="password" id="password"  placeholder="Password" [value]="password" (change)="password=$event.target.value">
+                    </div>
+                </div>
+            </div>
+            <!-- <div fxFlex  fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <div fxFlex>
+                    <mat-checkbox color="primary">Remember Me</mat-checkbox>
+                </div>
+                <div fxFlex  fxLayoutAlign="end">
+                    <a href="javascript:void(0)">Forget Password</a>
+                </div>
+            </div> -->
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <button type="button" [disabled]="loading" mat-raised-button color="primary" class="w-100" (click)="onLogin()">Login</button>
+                </div>
+            </div>
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <div fxFlex>
+                    {{errorMessage}}
+                </div>
+            </div>
+            <div class="text-center" style="text-align: center;margin-bottom: 25px;">
+                <!-- <span class="app-name">
+                  DCT
+                </span> -->
+                <img src="assets/images/logo2.png" class="circle z-depth-2 responsive-img activator" alt="{{subTitle}}" style="max-width: 300px;">
+            </div>
+        </form>
+    </div>
+</div>

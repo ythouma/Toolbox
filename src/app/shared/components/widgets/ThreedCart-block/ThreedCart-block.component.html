@@ -1,0 +1,12 @@
+<div class='ili-panel threed_cart_panel'>
+  <div class="input-group input-group-sm threed_cart_content">
+    <span class="input-group-addon"><input value="true" [checked]="block.data.cart" [(ngModel)]="block.data.cart" type="checkbox"></span>
+    <input type="text" [(ngModel)]="block.data.url" placeholder="PushPay Url" class="form-control">
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkThreedCartPriority('window')" [(ngModel)]="block.data.window" [checked]="block.data.window">Open in new window for all devices</label>
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkThreedCartPriority('iphonewindow')" [(ngModel)]="block.data.iphonewindow" [checked]="block.data.iphonewindow">Open in new window for iOS devices</label>
+  </div>
+</div>

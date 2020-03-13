@@ -1,0 +1,37 @@
+<div class="row cc-options-sub-row">
+  <div class="cc-options-sub-questionaire">
+    <span class="cc-sub-question-no">{{getLevelIndex()}}.{{getAlphaLetter(currentIndex)}}</span>
+    <input [style.width]="questionWidth + 'px'" type="text" [(ngModel)]="subOption.questionText" class="form-control input-sm cc-sub-questionaire" placeholder="Type question or text here ">
+    <button (click)="addOption($event)" class="btn btn-info btn-xs cc-sub-add-options">Add Option</button>
+    <img (click)="deleteSubLevel($event)" class="cc-delete-quest-option" src="/assets/img/close_bg.png">
+    <div class="cc-sub-questionare-options">
+    <span class="cc-sub-questionare-decription">User can select</span>
+    <div class="cc_sub_questionnaire_controls">
+    <form>
+      <label style="font-size: 11px;" class="radio-inline"><input value="single" [(ngModel)]="subOption.questionType" type="radio" class="cc-ques-one" name="optradio">One Answer</label>
+      <label style="font-size: 11px;" class="radio-inline"><input value="multiple" [(ngModel)]="subOption.questionType"  type="radio" class="cc-ques-multiple" name="optradio">Multiple Answers</label>
+    </form>
+    </div>
+    <div class="cc-sub-ques-opts">
+      <form>
+        <label style="font-size: 11px;" class="radio-inline"><input value="radio" [(ngModel)]="subOption.inputControlType" type="radio" class="cc-ques-radio" name="optradio">Radio Button</label>
+        <label style="font-size: 11px;" class="radio-inline"><input value="dropdown" [(ngModel)]="subOption.inputControlType" type="radio" class="cc-ques-dropdown" name="optradio">Dropdown</label>
+      </form>
+    </div>
+    </div>
+    <div *ngFor="let subMain of subOption.options; let opI = index; trackBy:trackByIndex" class="row cc-sub-questions-row">
+      <div class="cc-sub-ques-list-input">
+        <input [style.width]="optionWidth + 'px'" [(ngModel)]="subOption.options[opI]!.option" type="text" class="form-control input-sm cc_ques_option_box" placeholder="Type option here">
+        <img (click)="removeOption(subMain)" class="cc-delete-quest-option" src="/assets/img/close_bg.png">
+        <img *ngIf="isLevel" width="19" title="Add Question" (click)="addSubOption($event, subMain, 'questions')" class="cc-delete-quest-option" src="/assets/img/add_sub_questionnaire.png">
+        <img *ngIf="isLevel" width="19" title="Add Textbox" (click)="addSubOption($event, subMain, 'description')"  class="cc-delete-quest-option" src="/assets/img/add_sub_entry.png">
+      </div>
+      <div *ngFor="let subOpt of subOption.options[opI]?.subQuestions; let subIndex = index; trackBy:trackByIndex">
+        <questionnaire-sub-option *ngIf="!utils.isEmptyObject(subOpt) && subOpt.hasOwnProperty('type') && subOpt['type'] === 'questions'" [questionWidth]="461" [optionWidth]="460" [isLevel]="false" (removeSubLevel)="deleteLevel($event)" [levelIndex]="2" [currentIndex]="subIndex" [parentIndex]="opI" [subOption]="subOpt">
+        </questionnaire-sub-option>
+        <description-sub-option *ngIf="!utils.isEmptyObject(subOpt) && subOpt.hasOwnProperty('type') && subOpt['type'] === 'description'" [selectWidth]="393" [descriptionWidth]="461" (removeSubLevel)="deleteLevel($event)" [levelIndex]="2" [currentIndex]="subIndex" [parentIndex]="opI" [subOption]="subOpt">
+        </description-sub-option>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class='ili-panel share_panel'>
+  <p style="font-size: 11px; float: left;">It is not recommended that Forms be shared.  If shared, forms may be filled from Facebook or Twitter or Email.</p>
+  <div class='input-group input-group-sm main_share_content'>
+    <!-- <span class='input-group-addon' style='padding: 0px 10px; font-size: 18px;'>
+    <span (click)="imageLibrary($event, 'image')" class='glyphicon glyphicon-picture select-image-toshare' style='margin-right: 10px; cursor:pointer;'></span>
+    <span (click)="videoLibrary($event, 'sharevideo')" class='glyphicon glyphicon-facetime-video select-video-toshare' style='cursor:pointer;'></span></span>
+    <input type='text' placeholder='Share URL' [(ngModel)]="block.data.shareURL" class='share-url form-control' /> -->
+    <mat-form-field>
+      <input matInput placeholder="Share URL" [(ngModel)]="block.data.shareURL">
+      <button mat-icon-button matSuffix (click)="imageLibrary($event, 'shareURL')" [attr.aria-label]="'Select Image'" >
+        <mat-icon>image</mat-icon>
+      </button>
+      <button mat-icon-button matSuffix (click)="videoLibrary($event, 'shareURL')" [attr.aria-label]="'Select Video'">
+        <mat-icon>videocam</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.facebook" [(ngModel)]="block.data.facebook" (change)="onChange($event)">Facebook</mat-checkbox>
+    <!-- <span class="input-group-addon"><input value="true" [checked]="block.data.facebook" [(ngModel)]="block.data.facebook" type="checkbox"></span>
+    <span class="form-control"> Facebook </span> -->
+  </div>
+  <div class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.twitter" [(ngModel)]="block.data.twitter" (change)="onChange($event)">Twitter</mat-checkbox>
+    <!-- <span class="input-group-addon">
+      <input value="true" [checked]="block.data.twitter" [(ngModel)]="block.data.twitter" type="checkbox">
+    </span>
+    <span class="form-control"> Twitter </span> -->
+  </div>
+  <div class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.email" [(ngModel)]="block.data.email" (change)="onChange($event)">Email</mat-checkbox>
+    <!-- <span class="input-group-addon">
+      <input value="true" [checked]="block.data.email" [(ngModel)]="block.data.email" type="checkbox">
+    </span>
+    <span class="form-control"> Email </span> -->
+  </div>
+  <div class="input-group input-group-sm main_share_content" *ngIf="block.data.email">
+    <mat-form-field>
+      <input matInput placeholder="Share email address" [(ngModel)]="block.data.shareEmailId">
+    </mat-form-field>
+  </div>
+  <div class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.pinterest" [(ngModel)]="block.data.pinterest" (change)="onChange($event)">Pinterest</mat-checkbox>
+    <!-- <span class="input-group-addon"><input value="true" [checked]="block.data.pinterest" [(ngModel)]="block.data.pinterest" type="checkbox"></span>
+    <span class="form-control"> Pinterest </span> -->
+  </div>
+  <div class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.linkedIn" [(ngModel)]="block.data.linkedIn" (change)="onChange($event)">LinkedIn</mat-checkbox>
+    <!-- <span class="input-group-addon"><input value="true" [checked]="block.data.linkedIn" [(ngModel)]="block.data.linkedIn" type="checkbox"></span>
+    <span class="form-control"> LinkedIn </span> -->
+  </div>
+  <div style="display:none" class="input-group input-group-sm main_share_content">
+    <mat-checkbox value="true" [checked]="block.data.googleplus" [(ngModel)]="block.data.googleplus" (change)="onChange($event)">Google+</mat-checkbox>
+    <!-- <span class="input-group-addon"><input value="true" [checked]="block.data.googleplus" [(ngModel)]="block.data.googleplus" type="checkbox"></span>
+    <span class="form-control"> Google+ </span> -->
+  </div>
+</div>

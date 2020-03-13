@@ -1,0 +1,27 @@
+<div class="col-xl-12 videosPopup">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+		<!-- <mat-form-field >
+				<input matInput #searchInput placeholder="Search" [value]="searchVal">
+		</mat-form-field> -->
+	</div>
+	<div mat-dialog-content class="dialog-content">
+			<mat-card class="itemView" *ngFor="let itm of dataList; let index=index" (click)="closeModal(itm)">
+			  <mat-card-header>
+			    <!-- <mat-card-title>{{itm.title}}</mat-card-title> -->
+					<i class="material-icons" (click)="delete($event, itm._id, item.vimeoId)">delete_forever</i>
+			  </mat-card-header>
+			  <!-- <img mat-card-image src="{{itm.url}}"> -->
+			  <mat-card-content class="itemData">
+					<iframe [src]="itm.secureUrl" width="125" height="115" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+			  </mat-card-content>
+			</mat-card>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<mat-paginator [pageSize]="pageSize" [length]="paginatorTotal | async" [showFirstLastButtons]="true"></mat-paginator>
+		<div style="width: 100%">
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+    </div>
+	</div>
+	<br/>
+</div>

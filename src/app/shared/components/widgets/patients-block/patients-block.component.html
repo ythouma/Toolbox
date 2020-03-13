@@ -1,0 +1,9 @@
+<div class='ili-panel patients_panel'>
+  <div class="input-group input-group-sm patients_content">
+    <mat-form-field class="inputInside">
+      <mat-checkbox value="true" [checked]="block.data.patients" [(ngModel)]="block.data.patients" (change)="onChange($event)" disabled>
+        <input matInput type="text" placeholder="Title" [(ngModel)]="block.data.text" class="form-control" (change)="onChange($event)">
+      </mat-checkbox>
+    </mat-form-field>
+  </div>
+</div>

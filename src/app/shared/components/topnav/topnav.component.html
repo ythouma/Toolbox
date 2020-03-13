@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="fix-nav">
+    <button type="button" mat-icon-button class="visible-sm" (click)="toggleSidebar()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div class="nav-brand" title="{{subTitle}}">
+        <!-- {{title}} -->
+        <img src="assets/images/logo.png" class="circle z-depth-2 responsive-img activator" alt="{{title}}">
+    </div>
+    <button type="button" mat-icon-button class="hidden-sm" (click)="toggleSidebar()">
+        <mat-icon aria-label="Side nav toggle icon">vertical_split</mat-icon>
+    </button>
+    <!-- <form class="hidden-sm" style="margin-left: 20px; margin-top: 5px">
+        <mat-form-field>
+            <input matInput [placeholder]="'Search' | translate">
+        </mat-form-field>
+    </form> -->
+    <span class="nav-spacer"></span>
+    <!-- <a href="https://github.com/start-javascript/sb-admin-material/archive/master.zip" class="hidden-sm" mat-raised-button style="margin-right: 10px">
+        <mat-icon>cloud_download</mat-icon> {{ 'Download Now' | translate }}
+    </a> -->
+    <!-- <button class="hidden-sm" mat-icon-button [matMenuTriggerFor]="language">
+        <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #language="matMenu">
+        <button mat-menu-item (click)="changeLang('en')">
+            <span>{{ 'English' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="changeLang('fr')">
+            <span>{{ 'French' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="changeLang('ur')">
+            <span>{{ 'Urdu' | translate }}s</span>
+        </button>
+    </mat-menu> -->
+    <!-- <button mat-icon-button [routerLink] (click)="viewProfile()" >
+        <mat-icon>account_circle</mat-icon>
+    </button> -->
+    <!-- <button class="hidden-sm" mat-icon-button [matMenuTriggerFor]="profile" >
+        <mat-icon>account_circle</mat-icon>
+    </button> -->
+    <!-- <mat-menu #profile="matMenu">
+        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/profile']">
+            <mat-icon>person</mat-icon>
+            <span>{{ 'Profile' | translate }}</span>
+        </button>
+        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/settings']">
+            <mat-icon>settings</mat-icon>
+            <span>{{ 'Settings' | translate }}</span>
+        </button>
+    </mat-menu> -->
+    <div class="nav-org-list">
+      <app-custom-select-autocomplete #customselectautocomplete [value]="selectedOrganization" [dataType]="dataType" [dataTypeDisplay]="dataTypeDisplay" [placeholder]="'Select ' + dataTypeDisplay" [canDelete]="false" (onSelectReturn)="setSelectedOrganization($event)"></app-custom-select-autocomplete>
+    </div>
+    <button *ngIf="userType === 'default'" mat-icon-button (click)="onLoggedout()" title="Log Out">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>

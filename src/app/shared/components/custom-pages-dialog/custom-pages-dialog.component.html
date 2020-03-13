@@ -1,0 +1,27 @@
+<div class="col-xl-12 pagesPopup">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+		<mat-form-field >
+				<input matInput #searchInput placeholder="Search" [value]="searchVal">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+			<mat-card class="itemView" *ngFor="let itm of dataList; let index=index" (click)="closeModal(itm)">
+			  <!-- <mat-card-header>
+			    <mat-card-title>{{itm.title}}</mat-card-title>
+			  </mat-card-header> -->
+			  <!-- <img *ngIf="itm.art !== '/img/tile_default.jpg'" mat-card-image src="{{itm.art}}" alt="{{itm.title}}">
+			  <img *ngIf="itm.art === '/img/tile_default.jpg'" mat-card-image src="/assets/{{itm.art}}" alt="{{itm.title}}"> -->
+			  <mat-card-content>
+			    {{itm.title}}
+			  </mat-card-content>
+			</mat-card>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<mat-paginator [pageSize]="pageSize" [length]="paginatorTotal | async" [showFirstLastButtons]="true"></mat-paginator>
+		<div style="width: 100%">
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+    </div>
+	</div>
+	<br/>
+</div>

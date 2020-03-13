@@ -1,0 +1,64 @@
+@import '../../../../styles/conf';
+.galleryPopup{
+  .mat-card-image{
+    height: 130px;
+    width: 100%;
+    margin: 0px;
+  }
+  .itemData{
+    text-align: center;
+  }
+  .fieldItem{
+    // margin: 15px 10px;
+    label{
+      font-weight: bold;
+    }
+    .fieldInput{
+      margin: 5px 0px;
+    }
+  }
+  .example-full-width{
+    width: 100%;
+  }
+  .filterName{
+    line-height: 75px;
+    // max-width: 60px;
+    margin-right: 5px;
+    font-size: 1.5rem;
+  }
+  .itemView{
+    width: 220px;
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+    height: 165px;
+    i{
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      color: red;
+      cursor: pointer;
+    }
+  }
+  .mat-radio-button {
+      margin-right: 15px;
+  }
+  .itemView:hover{
+    background-color: #eee;
+  }
+  .itemView.selected{
+    background-color: #eee;
+  }
+  .dialog-content{
+    clear: both;
+  }
+  .dialog-actions{
+    clear: both;
+  }
+  button{
+    margin-right: 5px;
+  }
+}
+:host ::ng-deep .backgroundPopup .mat-dialog-title{
+  margin: 0px;
+}

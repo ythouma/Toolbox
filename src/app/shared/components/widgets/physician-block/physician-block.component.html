@@ -1,0 +1,8 @@
+<div class="ili-panel physician_panel">
+  <div class="input-group input-group-sm physician_content">
+    <span class="input-group-addon"><b style="margin-right:2%">*</b>
+    <input value="true" [checked]="block.data.mandatory" [(ngModel)]="block.data.mandatory" style="margin-right:24%;" title="Field is mandatory" type="checkbox">
+    <input disabled="true" checked="true" title="Physician list appears in the app" type="checkbox"></span>
+    <input [(ngModel)]="block.data.text" type="text" class="form-control">
+  </div>
+</div>

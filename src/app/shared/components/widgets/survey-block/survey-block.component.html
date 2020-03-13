@@ -1,0 +1,64 @@
+<div class='ili-panel survey_panel'>
+  <p class='text_header_content'>This widget allows you to add one or multiple questions, with one or more possible replies, with the choice of showing results in the app in real time.
+  It can be used for Polls, Surveys, Votes, Requests to volunteer, etc.</p>
+  <b style='float: left;margin-left:11px;'>*</b>
+  <input value="true" [checked]="block.data.mandatory" [(ngModel)]="block.data.mandatory" style='margin-right:.5%; float:left;' title='Field is mandatory'  class='question-survey-md' type='checkbox'>
+  <input type='text' class='form-control input-sm survey_question_text' [(ngModel)]="block.data.questionText" placeholder='Type question or text here '/>
+  <div class="row control_survey">
+    <span class="decription-survey">User can select</span>
+    <div class="survey_controls">
+      <form>
+      <label style="font-size: 11px;" class="radio-inline"><input #ctrlSingle (change)="controlChange(ctrlSingle.value)" value="false" [(ngModel)]="block.data.multiple" type="radio" class="ques-one" name="optradio">One Answer</label>
+      <label style="font-size: 11px;" class="radio-inline"><input #ctrlMultiple (change)="controlChange(ctrlMultiple.value)" value="true" [(ngModel)]="block.data.multiple" type="radio" class="ques-multiple" name="optradio">Multiple Answers</label></form>
+    </div>
+    <div *ngIf="block.data!.multiple && block.data.multiple === 'false'" class="survey-opts">
+      <form>
+      <label style="font-size: 11px;" class="radio-inline"><input value="radio" [(ngModel)]="block.data.controls" type="radio" class="ques-radio" name="optradio">Radio Button</label>
+      <label style="font-size: 11px;" class="radio-inline"><input value="dropdown" [(ngModel)]="block.data.controls" type="radio" class="ques-dropdown" name="optradio">Dropdown</label></form>
+    </div>
+    <div class="row control-app"><label style="font-size: 11px;" class="checkbox-inline">
+      <input value="true" [checked]="block.data.showInApp" [(ngModel)]="block.data.showInApp" class="chk-results" type="checkbox">Show results in app</label>
+      <label style="font-size: 11px;" class="checkbox-inline">
+      <input value="true" [checked]="block.data.isNote" [(ngModel)]="block.data.isNote" class="enable-note" type="checkbox">Take Notes</label>
+    </div>
+  </div>
+  <div class="survey-option-btn">
+    <button (click)="addOption($event)" class="btn btn-questionnaire btn-info btn-xs btn-add-text-box">Add Option</button>
+  </div>
+  <div *ngFor="let question of block.data.questions; let i = index; trackBy:trackByIndex" class="row survey_text_row">
+    <span class="options-count">{{i + 1}}.</span>
+    <input [(ngModel)]="block.data.questions[i]" type="text" class="form-control input-sm survey_option_box"  placeholder="Type option here" />
+    <img class="delete-quest-option" (click)="removeOption(question)" src="/assets/img/close_bg.png">
+  </div>
+</div>
+<div class="row survey_add_alert">
+  <button (click)="addConfirm($event)" class="btn btn-info btn-xs survey-confirmation" style="display: block;">Add Confirmation</button>
+  <button (click)="addAlert($event)" class="btn btn-ques-alert btn-info btn-xs">Add Alert</button>
+  <button (click)="addPopup($event)" class="btn btn-popup-alert btn-info btn-xs">Pop Up</button>
+</div>
+<div *ngIf="block.data.alerts && block.data.alerts.length > 0" class="ili-panel survey_panel">
+  <div  *ngFor="let alrt of block.data.alerts; let i = index; trackBy:trackByIndex" class="row ques_alert_row">
+  <span class="ques-alert-count">{{i + 1}}.</span>
+  <input type="text" [(ngModel)]="block.data.alerts[i]" class="form-control input-sm ques_alert_box" placeholder="Type email address to receive an alert when corresponding option is selected">
+  </div>
+</div>
+<span *ngIf="block.data.popup && block.data.popup.length > 0" class="txt-email-notes txt-popup">PopUp note for Selected Option</span>
+<div  *ngFor="let pp of block.data.popup; let i = index; trackBy:trackByIndex" style="margin-top: 8px;" class="row">
+  <div style="width:98%; margin-top: 7px;" class="col-md-11">
+    <div style="float:left; width:2.2%;">{{i + 1}}.</div>
+    <div style="float: left; width: 97.5%;">
+      <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.popup[i]" [config]="config"></ckeditor> -->
+      <ckeditor-block  [value]="block.data.popup[i]" (textView)="onChange(i, $event)" ></ckeditor-block>
+    </div>
+  </div>
+</div>
+<span *ngIf="block.data.confirmation && block.data.confirmation.length > 0" class="txt-email-notes txt-popup">Confirmation for Selected Option</span>
+<div *ngFor="let cc of block.data.confirmation; let i = index; trackBy:trackByIndex" style="margin-top: 8px;" class="row">
+  <div style="width:98%; margin-top: 7px;" class="col-md-11">
+    <div style="float:left; width:2.2%;">{{i + 1}}.</div>
+    <div style="float: left; width: 97.5%;">
+      <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.confirmation[i]" [config]="config"></ckeditor> -->
+      <ckeditor-block  [value]="block.data.confirmation[i]" (textView)="onChange(i, $event)" ></ckeditor-block>
+    </div>
+  </div>
+</div>

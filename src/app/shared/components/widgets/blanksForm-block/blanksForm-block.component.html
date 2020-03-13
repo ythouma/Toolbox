@@ -1,0 +1,12 @@
+<div class='ili-panel blanks_form_panel'>
+  <p style="font-size: 11px; float: left; margin-left: 6px;">Form will be automatically emailed to the indicated email addresses. Separate multiple email addresses with a comma followed by a space.</p>
+  <div class="confirmation_text_block">
+    <input type="text" [(ngModel)]="block.data.email" placeholder="To email address" class="form-control input-sm url_block_url">
+    <input min="0" type="number" [(ngModel)]="block.data.imageLimit" placeholder="Number of picture upload allowed" class="form-control input-sm url_block_url">
+  </div>
+  <p style="font-size: 11px;">To create a fill-in form, add 3 underlines where you want users to fill-in the blanks within your text. THE FILL-IN WILL AUTO EXPAND on the mobile device.</p>
+  <div class="row blank-form-content">
+    <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.text" [config]="config"></ckeditor> -->
+    <ckeditor-block [value]="block.data.text" [widget_Buttons_map]="widget_Buttons_map" (textView)="onChange($event)" ></ckeditor-block>
+  </div>
+</div>

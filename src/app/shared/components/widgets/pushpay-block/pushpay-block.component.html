@@ -1,0 +1,12 @@
+<div class='ili-panel push_pay_panel'>
+  <div class="input-group input-group-sm push_pay_content">
+    <span class="input-group-addon"><input value="true" [checked]="block.data.pushpay" [(ngModel)]="block.data.pushpay" type="checkbox"></span>
+    <input type="text" [(ngModel)]="block.data.url" placeholder="PushPay Url" class="form-control">
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkPushPayPriority('window')" [(ngModel)]="block.data.window" [checked]="block.data.window">Open in new window for all devices</label>
+  </div>
+  <div style="padding-left: 10px; font-size: 12px;" class="checkbox">
+    <label><input style="margin-top: 2px;" type="checkbox" value="true" (change)="checkPushPayPriority('iphonewindow')" [(ngModel)]="block.data.iphonewindow" [checked]="block.data.iphonewindow">Open in new window for iOS devices</label>
+  </div>
+</div>

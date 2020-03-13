@@ -1,0 +1,20 @@
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+  <div fxFlex>
+    <span *ngIf="loading">Loading...</span>
+  </div> 
+</div>  
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+  <div fxFlex>
+    <mat-card-header class="topBtns">
+    <mat-card-title >
+    <button mat-raised-button (click)="load()" color="warning">Load</button>
+    &nbsp;
+    <button mat-raised-button (click)="save()" color="warning">Save</button>
+  </mat-card-title>
+</mat-card-header>
+    <div class="modeler">
+      <div id="canvas"></div>
+      <div class="bpp-properties-panel" id="properties"></div>
+    </div>
+  </div>
+</div>

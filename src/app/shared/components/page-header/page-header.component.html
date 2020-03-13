@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xl-12">
+      <div class="subheader_main">
+        <!-- <h2 class="page-header">
+            {{title}} <small *ngIf="desc">{{desc}}</small>
+        </h2> -->
+        <!-- <div class="breadcrumb subheader_breadcrumbs" > -->
+          <div class="breadcrumb subheader_breadcrumbs">
+    			<span class="subheader_separator" style="display:none"></span>
+    			<a class="subheader_breadcrumbs-home"><mat-icon>label</mat-icon></a>
+    			<ng-container *ngFor="let item of breadcrumbs">
+    				<span class="subheader_breadcrumbs-separator"></span>
+    				<a *ngIf="item.page" [routerLink]="item.page" class="subheader_breadcrumbs-link">
+    					{{item.title}}
+    				</a>
+    				<span *ngIf="!item.page" class="subheader_breadcrumbs-link">
+    					{{item.title}}
+    				</span>
+    			</ng-container>
+    		</div>
+        <!-- <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" [routerLink]="['/dailylogs']">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active"><i class="fa {{icon}}"></i> {{heading}}</li>
+        </ol> -->
+      </div>
+    </div>
+</div>

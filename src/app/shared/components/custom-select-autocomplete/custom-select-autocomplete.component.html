@@ -1,0 +1,8 @@
+<form class="example-form">
+  <input type="text" [value]="dataText" placeholder="{{placeholder}}" aria-label="Number" [matAutocomplete]="auto" (input)="termSearch($event.target.value)" style="width: 100%;" (blur)="onBlurMethod($event.target.value)" [formControl]="stateCtrl">
+  <mat-autocomplete class="autocomplete" #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="setAttribute($event.option.value)">
+    <mat-option *ngFor="let option of filteredData | async" [value]="option" title="{{option.text}}">
+      {{option.text}} <i *ngIf="canDelete" class="material-icons deleteItem" (click)="deleteItem($event, option)">cancel</i>
+    </mat-option>
+  </mat-autocomplete>
+</form>

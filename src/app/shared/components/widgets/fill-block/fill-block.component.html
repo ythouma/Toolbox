@@ -1,0 +1,7 @@
+<div class="ili-panel fill_in_panel">
+  <p style="font-size: 12px;">To create a fill-in form, add 3 underlines where you want users to fill-in the blanks within your text. THE FILL-IN WILL AUTO EXPAND on the mobile device. User may email the form to themselves or any other email address.</p>
+  <div class="row fill_in_main_content">
+    <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.text" [config]="config"></ckeditor> -->
+    <ckeditor-block  [value]="block.data.text" [widget_Buttons_map]="widget_Buttons_map" (textView)="onChange($event)" ></ckeditor-block>
+  </div>
+</div>

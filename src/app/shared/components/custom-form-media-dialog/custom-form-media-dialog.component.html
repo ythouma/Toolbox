@@ -1,0 +1,79 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<!-- <table role="presentation" id="cke_2441_uiElement" class="cke_dialog_ui_hbox">
+			<tbody>
+				<tr class="cke_dialog_ui_hbox">
+					<td class="cke_dialog_ui_hbox_first" role="presentation" style="width:33%">
+						<input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="link" aria-labelledby="cke_2435_radio_input_label" id="cke_2436_uiElement" [(ngModel)]="type">
+						<label id="cke_2435_radio_input_label" for="cke_2436_uiElement" class="">Text</label>
+					</td>
+					<td class="cke_dialog_ui_hbox_child" role="presentation" style="width:33%">
+						<input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="button" aria-labelledby="cke_2437_radio_input_label" id="cke_2438_uiElement" [(ngModel)]="type">
+						<label id="cke_2437_radio_input_label" for="cke_2438_uiElement" class="">Button</label>
+					</td>
+					<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:33%"><input type="radio" class="cke_dialog_ui_radio_input" name="rdoCloseTile_radio" value="image" aria-labelledby="cke_2439_radio_input_label" id="cke_2440_uiElement" [(ngModel)]="type">
+						<label id="cke_2439_radio_input_label" for="cke_2440_uiElement" class="">Image</label>
+					</td>
+			</tr>
+			</tbody>
+		</table>
+		<mat-form-field style="width: 100%;">
+			<label>Tile will automatically close after</label>
+			<input matInput type="number" placeholder="" min="0" [(ngModel)]="dataVal">
+			<mat-hint>Seconds</mat-hint>
+		</mat-form-field> -->
+		<table role="presentation" cellspacing="0" border="0" style="width:100%;float:none;" align="left">
+			<tbody>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<div role="radiogroup" aria-labelledby="cke_5051_label" id="cke_5057_uiElement" class="cke_dialog_ui_radio" style="margin-bottom: 8px">
+							<label class="cke_dialog_ui_labeled_label" id="cke_5051_label"></label>
+							<div class="cke_dialog_ui_labeled_content" role="presentation">
+								<table role="presentation" id="cke_5056_uiElement" class="cke_dialog_ui_hbox">
+									<tbody>
+										<tr class="cke_dialog_ui_hbox">
+											<td class="cke_dialog_ui_hbox_first" role="presentation" style="width:50%">
+												<input type="radio" class="cke_dialog_ui_radio_input" name="rdoFormMedia_radio" value="picture" aria-labelledby="cke_5052_radio_input_label" id="cke_5053_uiElement" style="margin-bottom: 8px" [(ngModel)]="type">
+												<label id="cke_5052_radio_input_label" for="cke_5053_uiElement" class="" style="margin-bottom: 8px">Picture</label>
+											</td>
+											<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:50%">
+												<input type="radio" class="cke_dialog_ui_radio_input" name="rdoFormMedia_radio" value="video" aria-labelledby="cke_5054_radio_input_label" id="cke_5055_uiElement" style="margin-bottom: 8px" [(ngModel)]="type">
+												<label id="cke_5054_radio_input_label" for="cke_5055_uiElement" class="" style="margin-bottom: 8px">Video</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<span id="cke_5060_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							<input class="cke_dialog_ui_checkbox_input" type="checkbox" aria-labelledby="cke_5058_label" id="cke_5059_uiElement" style="margin-bottom: 4px" [(ngModel)]="deleteIcon">
+							<label id="cke_5058_label" for="cke_5059_uiElement">Delete Icon</label>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						<span id="cke_5063_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							<input class="cke_dialog_ui_checkbox_input" type="checkbox" aria-labelledby="cke_5061_label" id="cke_5062_uiElement" style="margin-bottom: 4px" [(ngModel)]="mediaName">
+							<label id="cke_5061_label" for="cke_5062_uiElement">Media Name</label>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="confirmModal()">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>

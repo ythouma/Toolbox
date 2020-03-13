@@ -1,0 +1,39 @@
+<div class="kt-portlet">
+	<div class="kt-portlet__head kt-portlet__head__custom">
+		<div class="kt-portlet__head-label">
+			<h3 class="kt-portlet__head-title">
+				<div *ngIf="data.alertSetting.hasOwnProperty('titleIsTemplate') && data.alertSetting.titleIsTemplate">
+					<div [innerHTML]="data.title"></div>
+				</div>
+				<div *ngIf="!data.alertSetting.hasOwnProperty('titleIsTemplate') || data.alertSetting.hasOwnProperty('titleIsTemplate') && !data.alertSetting.titleIsTemplate">
+					{{data.title}}
+				</div>
+			</h3>
+		</div>
+	</div>
+	<div class="kt-form">
+		<div class="kt-portlet__body">
+			<div class="form-group kt-form__group row">
+				<div class="col-lg-12">
+					<div *ngIf="data.alertSetting.hasOwnProperty('messageIsTemplate') && data.alertSetting.messageIsTemplate">
+			      <div [innerHTML]="data.description"></div>
+			    </div>
+					<div *ngIf="!data.alertSetting.hasOwnProperty('messageIsTemplate') || data.alertSetting.hasOwnProperty('messageIsTemplate') && !data.alertSetting.messageIsTemplate">
+			      {{data.description}}
+			    </div>
+				</div>
+			</div>
+		</div>
+		<div class="kt-portlet__foot kt-portlet__no-border kt-portlet__foot--fit text-right">
+			<div class="kt-form__actions kt-form__actions--sm">
+				<button *ngIf="data.alertSetting.hasOwnProperty('btnText1')" mat-button (click)="onYesClick('btnText1', data.alertSetting.btnText1)" style="float:right">{{data.alertSetting.btnText1}}</button>&nbsp;
+				<button *ngIf="data.alertSetting.hasOwnProperty('btnText2')" mat-button (click)="onYesClick('btnText2', data.alertSetting.btnText2)" style="float:right">{{data.alertSetting.btnText2}}</button>&nbsp;
+				<button *ngIf="data.alertSetting.hasOwnProperty('btnText3')" mat-button (click)="onYesClick('btnText3', data.alertSetting.btnText3)" style="float:right">{{data.alertSetting.btnText3}}</button>&nbsp;
+
+				<button *ngIf="data.alertSetting.hasOwnProperty('confirmText')" mat-button (click)="onYesClick('confirmText', data.alertSetting.confirmText)" style="float:right">{{data.alertSetting.confirmText}}</button>&nbsp;
+				<button *ngIf="data.alertSetting.hasOwnProperty('declineText')" mat-button (click)="onYesClick('declineText', data.alertSetting.declineText)" style="float:right">{{data.alertSetting.declineText}}</button>&nbsp;
+				<button *ngIf="data.alertSetting.showCloseButton" mat-button (click)="onNoClick()" style="float:right">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,126 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'text'">
+    <text-block [block]="data" (textView)="setData($event)"></text-block>
+  </div>
+  <div *ngSwitchCase="'video'">
+    <video-block [block]="data" (videoView)="setData($event)"></video-block>
+  </div>
+  <div *ngSwitchCase="'picture'">
+    <picture-block [block]="data" (pictureView)="setData($event)"></picture-block>
+  </div>
+  <div *ngSwitchCase="'disqus'">
+    <disqus-block [block]="data" (disqusView)="setData($event)"></disqus-block>
+  </div>
+  <div *ngSwitchCase="'feed'">
+    <social-feed-block [block]="data" (feedView)="setData($event)"></social-feed-block>
+  </div>
+  <div *ngSwitchCase="'calendar'">
+    <calendar-block [block]="data" (calendarView)="setData($event)"></calendar-block>
+  </div>
+  <div *ngSwitchCase="'share'">
+    <share-block [block]="data" (shareView)="setData($event)"></share-block>
+  </div>
+  <div *ngSwitchCase="'patients'">
+    <patients-block [block]="data" (patientsView)="setData($event)"></patients-block>
+  </div>
+  <div *ngSwitchCase="'inquiry'">
+    <inquiry-block [block]="data" (inquiryView)="setData($event)"></inquiry-block>
+  </div>
+  <div *ngSwitchCase="'survey'">
+    <survey-block [block]="data" (surveyView)="setData($event)"></survey-block>
+  </div>
+  <div *ngSwitchCase="'questionnaire'">
+    <questionnaire-block [block]="data" (questionnaireView)="setData($event)"></questionnaire-block>
+  </div>
+  <div *ngSwitchCase="'startwrapper'">
+    <startWrapper-block [block]="data" (startWrapperView)="setData($event)"></startWrapper-block>
+  </div>
+  <div *ngSwitchCase="'title'">
+    <formTitle-block [block]="data" (formTitleView)="setData($event)"></formTitle-block>
+  </div>
+  <div *ngSwitchCase="'questions'">
+    <questions-block [block]="data" (questionsView)="setData($event)"></questions-block>
+  </div>
+  <div *ngSwitchCase="'attendance'">
+    <attendance-block [block]="data" (attendanceView)="setData($event)"></attendance-block>
+  </div>
+  <div *ngSwitchCase="'confirmation'">
+    <confirmation-block [block]="data" (confirmationView)="setData($event)"></confirmation-block>
+  </div>
+  <div *ngSwitchCase="'password'">
+    <password-block [block]="data" (passwordView)="setData($event)"></password-block>
+  </div>
+  <div *ngSwitchCase="'next'">
+    <next-block [block]="data" (nextView)="setData($event)"></next-block>
+  </div>
+  <div *ngSwitchCase="'formphoto'">
+    <formPhoto-block [block]="data" (formPhotoView)="setData($event)"></formPhoto-block>
+  </div>
+  <div *ngSwitchCase="'formdocument'">
+    <formDocument-block [block]="data" (formDocumentView)="setData($event)"></formDocument-block>
+  </div>
+  <div *ngSwitchCase="'painlevel'">
+    <painLevel-block [block]="data" (painLevelView)="setData($event)"></painLevel-block>
+  </div>
+  <div *ngSwitchCase="'drawtool'">
+    <drawTool-block [block]="data" (drawToolView)="setData($event)"></drawTool-block>
+  </div>
+  <div *ngSwitchCase="'physician'">
+    <physician-block [block]="data" (physicianView)="setData($event)"></physician-block>
+  </div>
+  <div *ngSwitchCase="'endwrapper'">
+    <endWrapper-block [block]="data" (endWrapperView)="setData($event)"></endWrapper-block>
+  </div>
+  <div *ngSwitchCase="'fill'">
+    <fill-block [block]="data" (fillView)="setData($event)"></fill-block>
+  </div>
+  <div *ngSwitchCase="'notes'">
+    <notes-block [block]="data" (notesView)="setData($event)"></notes-block>
+  </div>
+  <div *ngSwitchCase="'buttons'">
+    <buttons-block [block]="data" (buttonsView)="setData($event)"></buttons-block>
+  </div>
+  <div *ngSwitchCase="'contactus'">
+    <contactus-block [block]="data" (contactusView)="setData($event)"></contactus-block>
+  </div>
+  <div *ngSwitchCase="'placefull'">
+    <placefull-block [block]="data" (placefullView)="setData($event)"></placefull-block>
+  </div>
+  <div *ngSwitchCase="'addtocart'">
+    <addtocart-block [block]="data" (addToCartView)="setData($event)"></addtocart-block>
+  </div>
+  <div *ngSwitchCase="'cart'">
+    <cart-block [block]="data" (cartView)="setData($event)"></cart-block>
+  </div>
+  <div *ngSwitchCase="'blanksform'">
+    <blanksForm-block [block]="data" (blanksFormView)="setData($event)"></blanksForm-block>
+  </div>
+  <div *ngSwitchCase="'exclusiveurl'">
+    <exclusiveurl-block [block]="data" (exclusiveUrlView)="setData($event)"></exclusiveurl-block>
+  </div>
+  <div *ngSwitchCase="'fileupload'">
+    <fileupload-block [block]="data" (fileUploadView)="setData($event)"></fileupload-block>
+  </div>
+  <div *ngSwitchCase="'pushpay'">
+    <pushpay-block [block]="data" (pushPayView)="setData($event)"></pushpay-block>
+  </div>
+  <div *ngSwitchCase="'threedcart'">
+    <ThreedCart-block [block]="data" (threedCartView)="setData($event)"></ThreedCart-block>
+  </div>
+  <div *ngSwitchCase="'blogs'">
+    <blogs-block [block]="data" (blogsView)="setData($event)"></blogs-block>
+  </div>
+  <div *ngSwitchCase="'chat'">
+    <chat-block [block]="data" (chatView)="setData($event)"></chat-block>
+  </div>
+  <div *ngSwitchCase="'account'">
+    <account-block [block]="data" (accountView)="setData($event)"></account-block>
+  </div>
+  <div *ngSwitchCase="'profile'">
+    <profile-block [block]="data" (profileView)="setData($event)"></profile-block>
+  </div>
+  <div *ngSwitchDefault>
+    <h1>{{type}}</h1>
+    Not Developed Yet!!
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div *ngFor="let btnData of block.data; let i = index; trackBy:trackByIndex" class='ili-panel buttons_panel'>
+  <div class="row button_main_row">
+    <input type="text" [(ngModel)]="block.data[i].beforeText" class="form-control input-sm btn_before_text" placeholder="Before Click">
+    <button *ngIf="i===0" (click)="addButton($event)" class="btn btn-info btn-xs btn-add-blocks">+ Button</button>
+    <input [disabled]="checkDisabled(btnData, 'afterText')" type="text" [(ngModel)]="block.data[i].afterText" class="form-control input-sm btn_after_text" placeholder="After Click">
+    <label class="lbl-btn-txt">Or</label>
+    <button (click)="addConfirmation(btnData)" [disabled]="checkDisabled(btnData, 'confirm')" class="btn btn-info btn-xs btn-add-confirmation">+ Confirmation</button>
+  </div>
+  <div *ngIf="block.data[i]!.confirmation" class="row btn_confirm_main_content">
+    <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data[i].confirmation" [config]="config"></ckeditor> -->
+    <ckeditor-block [value]="block.data[i].confirmation" (textView)="onChange(i, $event)" ></ckeditor-block>
+  </div>
+</div>
+<div class="row button_add_alert">
+  <button (click)="addAlert($event)" class="btn btn-add-alert btn-info btn-xs btn-added-alert">Add Alert</button></div>
+  <div *ngIf="block.alerts.length > 0" class="ili-panel buttons_panel">
+  <div *ngFor="let alrtData of block.alerts; let aI = index; trackBy:trackByIndex" class="row btn_alert_row">
+  <input type="text" [(ngModel)]="block.alerts[aI]" class="form-control input-sm btn_alert_box" placeholder="Type email address to receive an alert when corresponding option is selected">
+</div>
+</div>

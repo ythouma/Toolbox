@@ -1,0 +1,85 @@
+@import '../../../../styles/conf';
+.dialog-title{
+  h2{
+    float:left;
+  }
+  mat-form-field{
+    float:right;
+  }
+}
+:host ::ng-deep .backgroundPopup .mat-dialog-title{
+  margin: 0px;
+}
+.dialog-content{
+  clear: both;
+}
+.dialog-actions{
+  clear: both;
+}
+.tileBgContent {
+    .tile-background {
+        margin-top: 20px;
+        margin-left: 20px;
+        display: inline-block;
+    }
+    .vertical-app-background {
+        height: 150px;
+        width: 120px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 3px #071838;
+        margin-right: 15px;
+        float: left;
+        position: relative;
+    }
+    .horizontal-app-background {
+        height: 90px;
+        width: 190px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 3px #071838;
+        float: left;
+        position: relative;
+    }
+    .delete-vertical-bg {
+        float: right;
+        margin-top: -17px;
+        cursor: pointer;
+    }
+    .delete-horizontal-bg {
+        float: right;
+        margin-top: -17px;
+        cursor: pointer;
+    }
+    .img-vertical-app-background {
+        position: relative;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translateX(-50%) translateY(-45%);
+        max-height: 150px;
+        max-width: 100%;
+    }
+    .img-vertical-background {
+        margin: 36px 20px 5px 40px;
+    }
+    .img-horizontal-background {
+        margin: 14px 50px 1px 70px;
+    }
+    .bgp-txt-fileUpload {
+        float: left;
+        margin-bottom: 1px;
+        font-size: 12px;
+        width: 100%;
+        margin-left: 30px;
+    }
+    .bgl-txt-fileUpload {
+        float: right;
+        font-size: 12px;
+        margin-right: 64px;
+    }
+    .vertical-size {
+        margin-left: 22px;
+    }
+    .horizontal-size {
+        margin-left: 52px;
+    }
+}

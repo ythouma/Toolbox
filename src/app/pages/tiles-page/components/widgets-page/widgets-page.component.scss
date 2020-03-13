@@ -1,0 +1,68 @@
+@import '../../../../../styles/conf';
+:host ::ng-deep .mat-divider{
+  position: relative !important;
+  margin-bottom: 10px;
+  top: 5px;
+}
+:host ::ng-deep .mat-form-field{
+  width: 100%;
+}
+.topBtns {
+  button{
+    margin: 2px 0px 0px 10px;
+    float: right;
+  }
+}
+:host ::ng-deep .topBtns .mat-card-header-text{
+  width: 100%;
+}
+.tileData .mat-card{
+  margin-bottom: 15px;
+  display: grid;
+}
+.tileName span{
+  vertical-align: middle;
+}
+.widget-basic-collapse {
+  // max-height: 142px;
+  // overflow: hidden;
+  // position: relative;
+  // transition: 1s;
+}
+.widget-basic-collapse img {
+  // background-color: $primary;
+  width: 30px;
+}
+
+.rotate90{
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.widget-basic-collapse .widget_btn {
+  cursor: pointer;
+  width: 85px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: $primary;
+  border: 1px solid $primary;
+  padding: 15px;
+  margin: 15px;
+  text-align: center;
+  border-radius: 10px;
+  color: $secondory;
+}
+.mat-list-base .mat-list-item .mat-list-icon, .mat-list-base .mat-list-option .mat-list-icon{
+  border-radius: 0;
+  width: 50px;
+  max-height: 50px;
+  max-width: 50px;
+}
+// .widget-basic-collapse:hover {
+//   max-height: 397px;
+//   overflow: hidden;
+//   cursor: pointer;
+//   transition: 1s;
+// }

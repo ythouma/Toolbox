@@ -1,0 +1,15 @@
+<div class='' style='float:left;margin-top:10px;margin-bottom:10px; width:100%'>
+  <div class='wrapper-title'><input placeholder='Title' [(ngModel)]="block.data.title" class='start-wrapper-title-text' type='text' /></div>
+  <div class="refresh-assign-group">
+    <label class="lbl-txt-clear-fields">Clear Fields after each submit</label>
+    <input value="true" [checked]="block.data.refresh" [(ngModel)]="block.data.refresh" class="refresh_form" style="margin-top:1px;" type="checkbox" title="Check this box if this form should be cleared every time the end-user enters this tile.">
+  </div>
+  <div class="refresh-assign-group">
+    <label class="lbl-txt-clear-fields">Clear and Close the Form</label>
+    <input value="true" [checked]="block.data.close" [(ngModel)]="block.data.close" class="close_form" type="checkbox" title="Check this box if this form should be cleared every time the end-user enters this tile and it will close the form.">
+  </div>
+  <div class="refresh-assign-group">
+    <label class="lbl-txt-clear-fields">Collapse</label>
+    <input [checked]="block.data.formCollapse" [(ngModel)]="block.data.formCollapse" class="form-collapse form_collapse" style="margin-top:1px;" type="checkbox">
+  </div>
+</div>

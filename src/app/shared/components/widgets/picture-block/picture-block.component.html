@@ -1,0 +1,6 @@
+<div class='ili-panel picture_panel'>
+  <div class="row picture_main_content">
+    <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.text" (change)="onChange($event)" [config]="config"></ckeditor> -->
+    <ckeditor-block  [value]="block.data.text" [widget_Buttons_map]="widget_Buttons_map" (textView)="onChange($event)" ></ckeditor-block>
+  </div>
+</div>

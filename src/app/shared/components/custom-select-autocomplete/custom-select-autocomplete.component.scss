@@ -1,0 +1,12 @@
+@import '../../../../styles/conf';
+.example-full-width{
+  width:100%;
+}
+.deleteItem{
+  float: right;
+  line-height: 50px;
+  color: $primary;
+}
+::ng-deep .autocomplete .mat-option-text {
+  white-space: unset !important;
+}

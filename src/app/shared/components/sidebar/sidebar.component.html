@@ -1,0 +1,55 @@
+<div id="sidebar">
+    <mat-nav-list>
+      <ng-container [ngTemplateOutlet]="menuListTemplate"></ng-container>
+    </mat-nav-list>
+</div>
+
+<!-- <span *ngFor="let item of menuConfigs.aside.items">
+  <a *ngIf="!item.permission" mat-list-item [routerLinkActive]="'active'" [routerLink]="[item.page]" >
+      <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ item.title | translate }}
+  </a>
+  <ng-template *ngIf="item.permission" [ngxPermissionsOnly]="item.permission">
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="[item.page]" >
+        <mat-icon class="sidenav-icon">grid_on</mat-icon> {{ item.title | translate }}
+    </a>
+  </ng-template>
+</span> -->
+<ng-template #menuListTemplate>
+	<ng-container *ngFor="let child of menuConfigs">
+		<ng-container *ngIf="child.title" [ngTemplateOutlet]="menuItemTemplate"
+			[ngTemplateOutletContext]="{ item: child }"></ng-container>
+	</ng-container>
+</ng-template>
+<ng-template #menuItemTemplate let-item="item" let-parentItem="parentItem">
+	<ng-container *ngIf="!item.submenu && !item.permission" [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem  }"></ng-container>
+	<ng-template *ngIf="!item.submenu && item.permission" [ngxPermissionsOnly]="item.permission">
+		<ng-container [ngTemplateOutlet]="menuItemInnerTemplate" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem  }"></ng-container>
+	</ng-template>
+	<ng-container *ngIf="item.submenu && !item.permission" [ngTemplateOutlet]="menuItemInnerTemplateSub" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem  }"></ng-container>
+	<ng-template *ngIf="item.submenu && item.permission" [ngxPermissionsOnly]="item.permission">
+		<ng-container [ngTemplateOutlet]="menuItemInnerTemplateSub" [ngTemplateOutletContext]="{ item: item, parentItem: parentItem  }"></ng-container>
+	</ng-template>
+</ng-template>
+<ng-template #menuItemInnerTemplate let-item="item" let-parentItem="parentItem">
+  <a *ngIf="item.target" mat-list-item href="{{item.page}}" target="{{item.target}}" >
+      <mat-icon *ngIf="item.icon" class="sidenav-icon">{{item.icon}}</mat-icon>
+      <span>{{ item.title | translate }}</span>
+  </a>
+  <a *ngIf="!item.target" mat-list-item [routerLinkActive]="'active'" [routerLink]="[item.page]" >
+      <mat-icon *ngIf="item.icon" class="sidenav-icon">{{item.icon}}</mat-icon>
+      <span>{{ item.title | translate }}</span>
+  </a>
+</ng-template>
+<ng-template #menuItemInnerTemplateSub let-item="item" let-parentItem="parentItem">
+  <div class="nested-menu">
+    <a mat-list-item (click)="addExpandClass(item.target)">
+        <mat-icon class="sidenav-icon">{{item.icon}}</mat-icon> {{ item.title | translate }}
+    </a>
+    <ul class="nested submenu" [class.expand]="showMenu === item.target">
+        <li *ngFor="let child of item.submenu">
+          <ng-container *ngIf="child.title" [ngTemplateOutlet]="menuItemTemplate"
+            [ngTemplateOutletContext]="{ item: child }"></ng-container>
+        </li>
+    </ul>
+  </div>
+</ng-template>

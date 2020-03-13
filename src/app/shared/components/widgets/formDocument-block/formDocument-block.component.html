@@ -1,0 +1,4 @@
+<div class="row form_media_main_content">
+  <!-- <ckeditor [editor]="Editor" [(ngModel)]="block.data.text" [config]="config"></ckeditor> -->
+  <ckeditor-block  [value]="block.data.text" [widget_Buttons_map]="widget_Buttons_map" (textView)="onChange($event)" ></ckeditor-block>
+</div>

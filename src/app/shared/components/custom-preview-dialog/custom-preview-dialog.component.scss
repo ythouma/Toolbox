@@ -1,0 +1,35 @@
+@import '../../../../styles/conf';
+.tabs-1 {
+    background: url(/assets/img/QIL-Phone.png) no-repeat;
+    width: 306px;
+    height: 592px;
+    padding-top: 75px;
+    position: relative;
+    .material-icons{
+      cursor: pointer;
+      top: -25px;
+      right: 0px;
+      position: absolute;
+    }
+}
+.preview_phone {
+    overflow-x: hidden;
+    position: relative;
+    width: 253px;
+    height: 411px;
+    margin: auto;
+}
+.tabs-2 {
+    background: url(/assets/img/QIL-Tablet.png) no-repeat;
+    width: 760px;
+    height: 540px;
+    padding-top: 55px;
+    position: relative;
+}
+.preview_tab {
+    overflow-x: hidden;
+    position: relative;
+    width: 618px;
+    height: 460px;
+    margin: -15px 20px 50px 70px;
+}

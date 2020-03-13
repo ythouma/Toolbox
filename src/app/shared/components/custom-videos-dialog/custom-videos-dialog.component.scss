@@ -1,0 +1,46 @@
+@import '../../../../styles/conf';
+.videosPopup{
+  .mat-card-image{
+    height: 130px;
+    width: 100%;
+    margin: 0px;
+  }
+  .itemData{
+    text-align: center;
+  }
+  .fieldItem{
+    // margin: 15px 10px;
+    label{
+      font-weight: bold;
+    }
+    .fieldInput{
+      margin: 5px 0px;
+    }
+  }
+  .itemView{
+    width: 220px;
+    float: left;
+    margin: 10px;
+    cursor: pointer;
+    height: 165px;
+    i{
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      color: red;
+      cursor: pointer;
+    }
+  }
+  .itemView:hover{
+    background-color: #eee;
+  }
+  .dialog-content{
+    clear: both;
+  }
+  .dialog-actions{
+    clear: both;
+  }
+}
+:host ::ng-deep .backgroundPopup .mat-dialog-title{
+  margin: 0px;
+}

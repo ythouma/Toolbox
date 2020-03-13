@@ -1,0 +1,42 @@
+<div class="col-xl-12 tilesPopup">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+		<mat-form-field >
+				<input matInput #searchInput placeholder="Search" [value]="searchVal">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+			<mat-card class="itemView" *ngFor="let itm of dataList; let index=index" (click)="closeModal(itm)">
+			  <!-- <mat-card-header>
+			    <mat-card-title>{{itm.title}}</mat-card-title>
+			  </mat-card-header> -->
+			  <img *ngIf="itm.art !== '/img/tile_default.jpg'" mat-card-image src="{{itm.art}}" alt="{{itm.title}}">
+			  <img *ngIf="itm.art === '/img/tile_default.jpg'" mat-card-image src="/assets/{{itm.art}}" alt="{{itm.title}}">
+			  <mat-card-content>
+			    {{itm.title}}
+			  </mat-card-content>
+			  <mat-card-actions>
+					<span *ngIf="itm.hasOwnProperty('smart')">
+						<mat-icon *ngFor="let smt of itm.smart" aria-hidden="false" title="{{smt.name}}">emoji_objects</mat-icon>
+					</span>
+					<span *ngIf="itm.hasOwnProperty('Procedure')">
+						<mat-icon *ngFor="let proc of itm.Procedure" aria-hidden="false" title="{{proc.name}}">local_hospital</mat-icon>
+					</span>
+					<span *ngIf="itm.hasOwnProperty('notification')">
+						<mat-icon *ngFor="let ntf of itm.notification" aria-hidden="false" title="{{ntf.name}}">notification_important</mat-icon>
+					</span>
+					<span *ngIf="itm.hasOwnProperty('hsrRuleEngine')">
+						<mat-icon *ngFor="let rul of itm.hsrRuleEngine" aria-hidden="false" title="{{rul.ruleName}}">favorite</mat-icon>
+					</span>
+					<mat-icon aria-hidden="false" class="rotate90" *ngIf="itm.hasOwnProperty('isWeight') && itm.isWeight">switch_video</mat-icon>
+			  </mat-card-actions>
+			</mat-card>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<mat-paginator [pageSize]="pageSize" [length]="paginatorTotal | async" [showFirstLastButtons]="true"></mat-paginator>
+		<div style="width: 100%">
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+    </div>
+	</div>
+	<br/>
+</div>

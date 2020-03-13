@@ -1,0 +1,17 @@
+<div class='ili-panel video_panel'>
+  <mat-form-field>
+    <input matInput [(ngModel)]="block.data.caption" class="form-control input-sm video_caption" type="text" placeholder="Video Caption">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="block.data.url" class="form-control input-sm video_url" type="text" placeholder="Video URL" [readonly]="true">
+    <button mat-icon-button matSuffix (click)="videoThumb($event, 'videoThumb')" [attr.aria-label]="'Select Image'" >
+      <mat-icon>photo_size_select_small</mat-icon>
+    </button>
+    <button mat-icon-button matSuffix (click)="showVideoList($event, 'url')" [attr.aria-label]="'Select Video'">
+      <mat-icon>videocam</mat-icon>
+    </button>
+  </mat-form-field>
+  <div *ngIf="block.data?.url" class="main_video_content">
+    <iframe [src]="block.data.url | safe" width="420" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+</div>

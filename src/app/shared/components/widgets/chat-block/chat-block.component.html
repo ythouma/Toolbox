@@ -1,0 +1,10 @@
+<div class='ili-panel chat_panel'>
+  <div class="input-group input-group-sm chat_enable_content">
+    <span class="input-group-addon"><input value="true" [checked]="block.data.chat" [(ngModel)]="block.data.chat" disabled="true" type="checkbox">
+    </span><span class="form-control">Enable chat</span>
+  </div>
+  <div class="input-group input-group-sm chat_enable_content">
+    <span class="input-group-addon"><input value="true" [checked]="block.data.isPrivate" [(ngModel)]="block.data.isPrivate" type="checkbox">
+    </span><span class="form-control">Private chat</span>
+  </div>
+</div>

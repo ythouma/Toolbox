@@ -1,0 +1,167 @@
+<div class="col-xl-12">
+	<div  mat-dialog-title class="dialog-title">
+		<h2>{{data.title}}</h2>
+	</div>
+	<div mat-dialog-content class="dialog-content">
+		<table role="presentation" cellspacing="0" border="0" style="width:100%;float:none;" align="left">
+			<tbody>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<div role="radiogroup" aria-labelledby="cke_5051_label" id="cke_5057_uiElement" class="cke_dialog_ui_radio" style="margin-bottom: 8px">
+						<label class="cke_dialog_ui_labeled_label" id="cke_5051_label"></label>
+						<div class="cke_dialog_ui_labeled_content" role="presentation">
+							<table role="presentation" id="cke_5056_uiElement" class="cke_dialog_ui_hbox">
+								<tbody>
+									<tr class="cke_dialog_ui_hbox">
+										<td class="cke_dialog_ui_hbox_first" role="presentation" style="width:50%">
+											<input type="radio" class="cke_dialog_ui_radio_input" name="rdoFormMedia_radio" value="picture" aria-labelledby="cke_5052_radio_input_label" id="cke_5053_uiElement" style="margin-bottom: 8px" [(ngModel)]="type" (change)="selectType($event.target.value)">
+											<label id="cke_5052_radio_input_label" for="cke_5053_uiElement" class="" style="margin-bottom: 8px">Picture</label>
+										</td>
+										<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:50%">
+											<input type="radio" class="cke_dialog_ui_radio_input" name="rdoFormMedia_radio" value="video" aria-labelledby="cke_5054_radio_input_label" id="cke_5055_uiElement" style="margin-bottom: 8px" [(ngModel)]="type" (change)="selectType($event.target.value)">
+											<label id="cke_5054_radio_input_label" for="cke_5055_uiElement" class="" style="margin-bottom: 8px">Video</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2725_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="moderated" aria-labelledby="cke_2723_label" id="cke_2724_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2723_label" for="cke_2724_uiElement">Moderated</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<table role="presentation" align="right" id="cke_2733_uiElement" class="cke_dialog_ui_hbox" style="float: left;margin-left:auto; margin-right:0">
+						<tbody>
+							<tr class="cke_dialog_ui_hbox">
+								<td class="cke_dialog_ui_hbox_first" role="presentation" style="width:33%">
+									<div id="cke_2726_uiElement" class="cke_dialog_ui_html">Background Color:</div>
+								</td>
+								<td class="cke_dialog_ui_hbox_child" role="presentation" style="width:33%">
+									<div role="presentation" id="cke_2729_uiElement" class="cke_dialog_ui_text">
+											<input class="cke_dialog_ui_input_text" [(ngModel)]="bgcolor" id="cke_2727_textInput" type="text" aria-labelledby="cke_2728_label" (change)="selectColor($event.target.value)">
+									</div>
+								</td>
+								<td class="cke_dialog_ui_hbox_last" role="presentation" style="width:33%">
+									<div role="presentation" id="cke_2732_uiElement" class="cke_dialog_ui_text media-color" style="display: inline;">
+										<input class="cke_dialog_ui_input_text" id="cke_2730_textInput" [(ngModel)]="bgcolor" type="color" aria-labelledby="cke_2731_label" (change)="selectColor($event.target.value)">
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2736_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px" [hidden]="type==='video'">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="rate" aria-labelledby="cke_2734_label" id="cke_2735_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2734_label" for="cke_2735_uiElement">Rate Picture</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2739_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="sort" aria-labelledby="cke_2737_label" id="cke_2738_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2737_label" for="cke_2738_uiElement">Enable Sort</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2742_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="views" aria-labelledby="cke_2740_label" id="cke_2741_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2740_label" for="cke_2741_uiElement">Enable Number of Views </label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2745_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="vote" aria-labelledby="cke_2743_label" id="cke_2744_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2743_label" for="cke_2744_uiElement">Enable Voting</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2748_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="showvote" aria-labelledby="cke_2746_label" id="cke_2747_uiElement" style="margin-bottom: 4px">
+						<label id="cke_2746_label" for="cke_2747_uiElement">Show Voting</label>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					<span id="cke_2751_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						<input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="name" aria-labelledby="cke_2749_label" id="cke_2750_uiElement" style="margin-bottom: 4px">
+						 <label id="cke_2749_label" for="cke_2750_uiElement">Media Name</label>
+					 </span>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					 <span id="cke_2754_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px;" [hidden]="type==='picture'">
+						 <input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="chat" aria-labelledby="cke_2752_label" id="cke_2753_uiElement" style="margin-bottom: 4px">
+						 <label id="cke_2752_label" for="cke_2753_uiElement">Enable Chat</label>
+					 </span>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					 <span id="cke_2757_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px;" [hidden]="type==='picture' && !chat">
+						 <input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="privatechat" aria-labelledby="cke_2755_label" id="cke_2756_uiElement" style="margin-bottom: 4px">
+						 <label id="cke_2755_label" for="cke_2756_uiElement">Private Chat</label>
+					 </span>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+					 <span id="cke_2760_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+						 <input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="uploadbutton" aria-labelledby="cke_2758_label" checked="checked" id="cke_2759_uiElement" style="margin-bottom: 4px">
+						 <label id="cke_2758_label" for="cke_2759_uiElement">Upload Button</label>
+					 </span>
+				 </td>
+			 </tr>
+			 <tr>
+				 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						 <span id="cke_2763_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							 <input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="floatingbottom" aria-labelledby="cke_2761_label" id="cke_2762_uiElement" style="margin-bottom: 4px">
+							 <label id="cke_2761_label" for="cke_2762_uiElement">Floating Bottom</label>
+						 </span>
+					 </td>
+				 </tr>
+				 <tr>
+					 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						 <span id="cke_2766_uiElement" class="cke_dialog_ui_checkbox" style="margin-bottom: 4px">
+							 <input class="cke_dialog_ui_checkbox_input" type="checkbox" [(ngModel)]="delete" aria-labelledby="cke_2764_label" id="cke_2765_uiElement" style="margin-bottom: 4px">
+							 <label id="cke_2764_label" for="cke_2765_uiElement">Delete Icon</label>
+						 </span>
+					 </td>
+				 </tr>
+				 <tr>
+					 <td role="presentation" style="padding:0px" class="cke_dialog_ui_vbox_child">
+						 <!-- <a style="user-select: none;" href="javascript:void(0)" title="Upload Icon" hidefocus="true" class="cke_dialog_ui_button" role="button" aria-labelledby="cke_2767_label" id="cke_2768_uiElement">
+							 <span id="cke_2767_label" class="cke_dialog_ui_button">Upload Icon</span>
+						 </a> -->
+					 </td>
+				 </tr>
+			 </tbody>
+		 </table>
+	</div>
+	<div mat-dialog-actions class="dialog-actions">
+		<span>
+			<button mat-raised-button color="danger" (click)="closeModal(undefined)">Close</button>
+			<button mat-raised-button (click)="confirmModal()">Confirm</button>
+    </span>
+	</div>
+	<br/>
+</div>
