@@ -1,0 +1,77 @@
+@import '../mixin';
+$default-text:14px;
+$sm-text:12px;
+$lg-text:16px;
+$body-bg:#fff;
+$sidebar-bg:#465294;
+$sidebar-fonts-color:#fff;
+$card-bg:#fff;
+$card-border:#e4e3e3;
+$white:#fff;
+$black:#000;
+$select-color:rgba($black, .1);
+$border-color:rgba($black, .1);
+$table-border-color:#e6e6e6;
+$fonts-color:#8721b1;
+$primary:#8721b1;
+$primary-second:#8721b1;
+$primary-third:#03a9f4;
+$primary-fourth:#00bcd4;
+$secondory:#ffffff;
+$secondory-text:#02549a;
+$success:#16be9a;
+$danger:#f35800;
+$warning:#ff7403;
+$info:#2cc3ff;
+body {
+    background: $body-bg;
+}
+
+.bg-default {
+    @include linear-gradient(to top right, darken($card-bg, 40%), darken($card-bg, 30%));
+}
+
+.bg-primary {
+    @include linear-gradient(to top right, $primary, #ffd17c);
+}
+
+.bg-success {
+    @include linear-gradient(to top right, $success, #42e697);
+}
+
+.bg-danger {
+    @include linear-gradient(to top right, $danger, #fda09c);
+}
+
+.bg-warning {
+    @include linear-gradient(to top right, $warning, #fac980);
+}
+
+.bg-info {
+    @include linear-gradient(to top right, $info, #15f8bf);
+}
+
+button.mat-default {
+    @include linear-gradient(to top right, darken($card-bg, 40%), darken($card-bg, 30%));
+}
+
+button.mat-primary {
+    @include linear-gradient(to top right, $primary, $primary-second);
+}
+
+button.mat-success {
+    @include linear-gradient(to top right, $success, #42e697);
+}
+
+button.mat-danger {
+    @include linear-gradient(to top right, $danger, $danger);
+    color: white;
+}
+
+button.mat-warning {
+    @include linear-gradient(to top right, $warning, #fca063);
+}
+
+button.mat-info {
+    @include linear-gradient(to top right, $info, #15f8bf);
+}

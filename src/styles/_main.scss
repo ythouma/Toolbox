@@ -1,0 +1,47 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial';
+}
+
+.main-container {
+    position: absolute;
+    top: 64px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+.open-container > * {
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  font-size: 1em;
+  right: 10px;
+  bottom: 10px;
+  color: $fonts-color;
+  a{
+    color: $secondory-text;
+    text-decoration: none;
+  }
+  a:hover{
+    color: $secondory-text;
+    text-decoration: underline;
+  }
+}
+.mat-expansion-panel-content {
+    font: 400 14px/20px Roboto,"Helvetica Neue",sans-serif;
+}
+.myPreviewClass .mat-dialog-container {
+      background-color: transparent;
+      box-shadow: none;
+      overflow: hidden;
+}
+
